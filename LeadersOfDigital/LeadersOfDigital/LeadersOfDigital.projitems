@@ -13,9 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Exceptions\HumanReadableException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PageStateType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelHandledAction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AuthorizationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Authorization\AuthorizationViewModel.cs" />
   </ItemGroup>
 </Project>
