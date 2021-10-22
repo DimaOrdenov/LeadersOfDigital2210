@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="launcher_background">#FFFFFF</color>
+    <color name="backgroundLight">#FAFAFAED</color>
+    <color name="background">#F1F3F6</color>
+    <color name="colorText">#22215B</color>
+    <color name="colorText60">#9922215B</color>
     <color name="colorPrimary">#567DF4</color>
-    <color name="colorPrimaryDark">#F8F8FA</color>
-    <color name="colorAccent">#788CFE</color>
-    <color name="navy">#22215B</color>
-    <color name="blackRussian">#1B1D28</color>
-    <color name="waterloo">#7B7F9E</color>
+    <color name="colorAccent">#FB447C</color>
 </resources>
