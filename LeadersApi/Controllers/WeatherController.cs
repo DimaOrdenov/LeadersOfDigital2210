@@ -12,7 +12,7 @@ namespace LeadersApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherController : ControllerBase
+    public class WeatherController : Controller
     {
         private readonly AppDbContext _dbContext;
         private readonly ILogger<WeatherController> _logger;
