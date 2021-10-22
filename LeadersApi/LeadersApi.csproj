@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Dal\Dal.csproj" />
+      <ProjectReference Include="..\LeadersOfDigital.DataModels\LeadersOfDigital.DataModels.csproj" />
     </ItemGroup>
 
 </Project>
