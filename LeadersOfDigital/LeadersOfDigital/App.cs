@@ -1,4 +1,4 @@
-using LeadersOfDigital.ViewModels;
+using LeadersOfDigital.ViewModels.Authorization;
 using MvvmCross.ViewModels;
 
 namespace LeadersOfDigital
@@ -9,7 +9,7 @@ namespace LeadersOfDigital
         {
             base.Initialize();
 
-            RegisterAppStart<MainViewModel>();
+            RegisterAppStart<AuthorizationViewModel>();
         }
     }
 }
