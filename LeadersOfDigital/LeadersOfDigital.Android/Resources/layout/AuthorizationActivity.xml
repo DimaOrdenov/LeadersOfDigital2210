@@ -74,8 +74,10 @@
             app:layout_constraintRight_toRightOf="parent"
             android:text="@string/authorize"
             android:layout_marginBottom="16dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/social_networks_textview"
-            android:background="@drawable/primary_rounded_button_shape"
+            android:background="@drawable/ripple_rounded_primary"
             android:drawableRight="@drawable/ic_baseline_arrow_right_alt_24"/>
 
         <TextView

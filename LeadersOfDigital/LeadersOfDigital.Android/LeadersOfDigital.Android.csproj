@@ -78,7 +78,6 @@
     <AndroidResource Include="Resources\drawable\ic_train.xml" />
     <AndroidResource Include="Resources\drawable\ic_vk.xml" />
     <AndroidResource Include="Resources\drawable\ic_yandex.xml" />
-    <AndroidResource Include="Resources\drawable\primary_rounded_button_shape.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_accent.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_primary.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_white.xml" />
@@ -125,10 +124,6 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\ic_sbarbank.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\primary_rounded_button_shape.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
