@@ -27,7 +27,10 @@ namespace LeadersApi.Controllers
         {
             try
             {
-                return Ok(await _dbContext.Routes.ToListAsync());
+                return Ok(await _dbContext.Routes
+                    .Include(x => x.Origin)
+                    .Include(x => x.Destination)
+                    .ToListAsync());
             }
             catch (Exception ex)
             {

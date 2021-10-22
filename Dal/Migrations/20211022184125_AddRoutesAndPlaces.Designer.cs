@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211022171959_AddRoutesAndPlaces")]
+    [Migration("20211022184125_AddRoutesAndPlaces")]
     partial class AddRoutesAndPlaces
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
