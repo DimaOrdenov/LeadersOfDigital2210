@@ -13,11 +13,12 @@ namespace Dal
                 .AddJsonFile("secrets.json", false, true)
                 .Build();
 
-            return new (
+
+
+            return new(
                 new DbContextOptionsBuilder<AppDbContext>()
-                    .UseSqlServer(
-                        string.Format(configuration.GetConnectionString("Azure"), configuration["SqlUserId"], configuration["SqlPassword"]))
-                    .Options);
+               // .UseInMemoryDatabase("lks").Options);
+                   .UseSqlServer(string.Format(configuration.GetConnectionString("Azure"), configuration["SqlUserId"], configuration["SqlPassword"])).Options);
         }
     }
 }
