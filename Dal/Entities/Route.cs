@@ -13,8 +13,10 @@ namespace Dal.Entities
 
         public DateTime EndsAt { get; set; }
 
+        public int OriginId { get; set; }
         public Place Origin { get; set; }
 
+        public int DestinationId { get; set; }
         public Place Destination { get; set; }
     }
 }
