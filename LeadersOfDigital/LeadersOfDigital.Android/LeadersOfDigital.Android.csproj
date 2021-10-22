@@ -92,17 +92,12 @@
     <AndroidResource Include="Resources\font\gilroy_thin_italic.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light_italic.ttf" />
-    <AndroidResource Include="Resources\layout\AuthorizationActivity.xml" />
     <AndroidResource Include="Resources\layout\MainActivity.axml" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\layout\AuthorizationActivity.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\values\dimens.xml">
       <SubType></SubType>
       <Generator></Generator>
@@ -216,6 +211,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\font\gilroy_heavy.ttf">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AuthorizationActivity.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
