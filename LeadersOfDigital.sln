@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LeadersOfDigital", "LeadersOfDigital\LeadersOfDigital\LeadersOfDigital.shproj", "{B3E8159E-8A67-4067-8C31-F9E1C1FEC0A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersOfDigital.Android", "LeadersOfDigital\LeadersOfDigital.Android\LeadersOfDigital.Android.csproj", "{176EA03B-2A8B-476B-BCB8-EABE2DACACB7}"
@@ -8,13 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersOfDigital.iOS", "Lea
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{91BA45B1-00FB-49FE-8C5A-204996499B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersApi", "LeadersApi\LeadersApi.csproj", "{9FC95375-4380-47D8-BBE3-C7AD38CA6FB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeadersApi", "LeadersApi\LeadersApi.csproj", "{9FC95375-4380-47D8-BBE3-C7AD38CA6FB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersWeb", "LeadersWeb\LeadersWeb.csproj", "{91A14263-769E-44BE-83A5-9EDE2F7680A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeadersWeb", "LeadersWeb\LeadersWeb.csproj", "{91A14263-769E-44BE-83A5-9EDE2F7680A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{4F61E81F-2B28-462F-ACEB-EA05E00C54F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{4F61E81F-2B28-462F-ACEB-EA05E00C54F2}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LeadersOfDigital\LeadersOfDigital\LeadersOfDigital.projitems*{176ea03b-2a8b-476b-bcb8-eabe2dacacb7}*SharedItemsImports = 4
+		LeadersOfDigital\LeadersOfDigital\LeadersOfDigital.projitems*{6f539d83-2b75-4b41-8231-e498a808f942}*SharedItemsImports = 4
+		LeadersOfDigital\LeadersOfDigital\LeadersOfDigital.projitems*{b3e8159e-8a67-4067-8c31-f9e1c1fec0a8}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|iPhone = Debug|iPhone
@@ -109,9 +117,15 @@ Global
 		{4F61E81F-2B28-462F-ACEB-EA05E00C54F2}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{4F61E81F-2B28-462F-ACEB-EA05E00C54F2}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9FC95375-4380-47D8-BBE3-C7AD38CA6FB2} = {91BA45B1-00FB-49FE-8C5A-204996499B6C}
 		{91A14263-769E-44BE-83A5-9EDE2F7680A7} = {91BA45B1-00FB-49FE-8C5A-204996499B6C}
 		{4F61E81F-2B28-462F-ACEB-EA05E00C54F2} = {91BA45B1-00FB-49FE-8C5A-204996499B6C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7917F352-C7FF-431B-8922-8A4BA482928C}
 	EndGlobalSection
 EndGlobal
