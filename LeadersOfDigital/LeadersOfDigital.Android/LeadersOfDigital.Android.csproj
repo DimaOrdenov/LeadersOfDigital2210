@@ -51,6 +51,7 @@
     <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\MapActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
@@ -65,13 +66,25 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\airplane_over_blue_sky.png" />
+    <AndroidResource Include="Resources\drawable\bottom_sheet_rounded_background_primary.xml" />
+    <AndroidResource Include="Resources\drawable\ic_airplane_takeoff.xml" />
     <AndroidResource Include="Resources\drawable\ic_baseline_arrow_right_alt_24.xml" />
+    <AndroidResource Include="Resources\drawable\ic_car.xml" />
+    <AndroidResource Include="Resources\drawable\ic_close.xml" />
     <AndroidResource Include="Resources\drawable\ic_odnoklassniki.xml" />
+    <AndroidResource Include="Resources\drawable\ic_pin_underline.xml" />
     <AndroidResource Include="Resources\drawable\ic_sbarbank.xml" />
     <AndroidResource Include="Resources\drawable\ic_telegram.xml" />
+    <AndroidResource Include="Resources\drawable\ic_train.xml" />
     <AndroidResource Include="Resources\drawable\ic_vk.xml" />
     <AndroidResource Include="Resources\drawable\ic_yandex.xml" />
     <AndroidResource Include="Resources\drawable\primary_rounded_button_shape.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_accent.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_primary.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_white.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_accent.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_primary.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_white.xml" />
     <AndroidResource Include="Resources\font\gilroy_black.ttf" />
     <AndroidResource Include="Resources\font\gilroy_black_italic.ttf" />
     <AndroidResource Include="Resources\font\gilroy_bold.ttf" />
@@ -93,6 +106,7 @@
     <AndroidResource Include="Resources\font\gilroy_ultra_light.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light_italic.ttf" />
     <AndroidResource Include="Resources\layout\MainActivity.axml" />
+    <AndroidResource Include="Resources\layout\MapActivity.axml" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
