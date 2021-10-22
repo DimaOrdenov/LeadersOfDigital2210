@@ -1,4 +1,6 @@
+using AutoMapper;
 using Dal;
+using LeadersApi.Automapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace LeadersApi
 {
@@ -21,6 +24,9 @@ namespace LeadersApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddHttpClient();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
