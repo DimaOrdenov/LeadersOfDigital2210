@@ -40,6 +40,8 @@ namespace LeadersOfDigital.Android.Activities
                    .For(x => x.BindClick())
                    .To(vm => vm.AuthViaSocialNetworkCommand);
             }
+
+            set.Apply();
         }
     }
 }
