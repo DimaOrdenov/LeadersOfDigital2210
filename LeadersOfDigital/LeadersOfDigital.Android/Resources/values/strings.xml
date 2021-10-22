@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, Click Me!</string>
-    <string name="app_name">LeadersOfDigital</string>
+    <string name="app_name">NoTryCatch</string>
+    <string name="welcome">Добро пожаловать в</string>
+    <string name="authorize">Авторизоваться</string>
+    <string name="login_via_networks">Вход через социальные сети</string>
+    <string name="app_description">Это мобильное приложение путешественника с помощью которого вы сможете составить личный крутой маршрут</string>
+    <string name="continue_without_login">Продолжить без регистрации</string>
 </resources>
