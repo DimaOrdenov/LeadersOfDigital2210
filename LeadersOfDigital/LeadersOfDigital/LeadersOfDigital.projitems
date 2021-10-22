@@ -15,5 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelHandledAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Authorization\AuthorizationViewModel.cs" />
   </ItemGroup>
 </Project>

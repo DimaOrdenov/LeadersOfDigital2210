@@ -15,6 +15,8 @@ namespace LeadersOfDigital.Android.Activities.AuthorizationViewModel
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.AuthorizationActivity);
+
+
         }
     }
 }
