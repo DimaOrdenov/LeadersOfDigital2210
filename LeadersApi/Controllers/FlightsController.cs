@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LeadersApi.Models.Responses.Flights;
 using LeadersApi.Models.Responses.Hotels;
+using LeadersApi.Services.Flights;
 using LeadersOfDigital.DataModels.Enums;
 using LeadersOfDigital.DataModels.Responses.Flights;
 using LeadersOfDigital.DataModels.Responses.Hotels;
@@ -23,19 +24,15 @@ namespace LeadersApi.Controllers
     public class FlightsController : ControllerBase
     {
         private readonly ILogger<HotelsController> _logger;
-        private readonly IHttpClientFactory _clientFactory;
         private readonly IMapper _mapper;
-        private readonly IMemoryCache _memoryCache;
-        private readonly string _token;
+        private readonly IFlightsService _flightsService;
 
 
-        public FlightsController(ILogger<HotelsController> logger, IHttpClientFactory clientFactory, IMapper mapper, IMemoryCache memoryCache, IConfiguration configuration)
+        public FlightsController(ILogger<HotelsController> logger, IMapper mapper, IFlightsService flightsService)
         {
             _logger = logger;
-            _clientFactory = clientFactory;
             _mapper = mapper;
-            _memoryCache = memoryCache;
-            _token = configuration.GetValue<string>("AviasalesToken");
+            _flightsService = flightsService;
         }
 
         [HttpGet]
@@ -43,15 +40,7 @@ namespace LeadersApi.Controllers
         {
             try
             {
-
-                    var request = new HttpRequestMessage(HttpMethod.Get,
-                   $"https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin={origin}&destination={destination}&currency=rub&departure_at={departure:yyyy-MM-dd}&return_at={@return:yyyy-MM-dd}&sorting=price&direct=true&limit=100&token={_token}");
-
-                    var client = _clientFactory.CreateClient();
-
-                    var response = await client.SendAsync(request);
-                    var responseStream = await response.Content.ReadAsStringAsync();
-                    var flights = _mapper.Map<IEnumerable<FlightsResponse>>(JsonConvert.DeserializeObject<Flights>(responseStream).data);
+                var flights = _mapper.Map<IEnumerable<FlightsResponse>>(await _flightsService.GetFlights(origin, destination, departure, @return));
 
                 if (!flights.Any())
                 {
