@@ -23,7 +23,7 @@ namespace LeadersApi.Services.Hotels
         public async Task<IEnumerable<Hotel>> GetHotels(Cities city, DateTime from, DateTime to)
         {
 
-            if (!_memoryCache.TryGetValue("Hotels", out IEnumerable<Hotel> cacheEntry))
+            if (!_memoryCache.TryGetValue("Hotels", out IEnumerable<Hotel> cacheEntry) || (cacheEntry == null || !cacheEntry.Any()))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get,
               $"http://engine.hotellook.com/api/v2/cache.json?location={city}&currency=rub&checkIn={from:yyyy-MM-dd}&checkOut={to:yyyy-MM-dd}&limit=1000&lang=ru");
@@ -47,6 +47,17 @@ namespace LeadersApi.Services.Hotels
 
             return cacheEntry;
 
+        }
+
+        public async Task<Hotel> GetSuggestedHotel(int maxBudget, int currentBudget, Cities city, DateTime from, DateTime to)
+        {
+            var hotels = await GetHotels(city, from, to);
+
+
+            // TODO: подбор по бюджету и локации (по интересам пользователя)
+            var hotel = hotels.FirstOrDefault();
+
+            return hotel;
         }
     }
 }
