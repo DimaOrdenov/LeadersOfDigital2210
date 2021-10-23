@@ -23,5 +23,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Authorization\AuthorizationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\ProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\PopularViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\FavoritesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\MainViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Main\" />
   </ItemGroup>
 </Project>
