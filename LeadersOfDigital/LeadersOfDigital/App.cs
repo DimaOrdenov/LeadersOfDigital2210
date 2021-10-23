@@ -1,9 +1,9 @@
 using Business;
-using LeadersOfDigital.ViewModels;
+using LeadersOfDigital.ViewModels.Authorization;
+using LeadersOfDigital.ViewModels.Main;
 using Microsoft.Extensions.Logging;
 using MvvmCross;
 using MvvmCross.IoC;
-using LeadersOfDigital.ViewModels.Authorization;
 using MvvmCross.ViewModels;
 using RestSharp;
 using LeadersOfDigital.Android.Helpers;
@@ -22,6 +22,11 @@ namespace LeadersOfDigital
                     Mvx.IoCProvider.Resolve<ILogger<GoogleMapsApiService>>(),
                     Secrets.GoogleApisKey
                 ));
+
+            Mvx.IoCProvider.RegisterType<MainViewModel>();
+            Mvx.IoCProvider.RegisterType<FavoritesViewModel>();
+            Mvx.IoCProvider.RegisterType<PopularViewModel>();
+            Mvx.IoCProvider.RegisterType<ProfileViewModel>();
 
             RegisterAppStart<AuthorizationViewModel>();
         }
