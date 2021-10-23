@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersOfDigital.DataModels", "LeadersOfDigital.DataModels\LeadersOfDigital.DataModels.csproj", "{9D864E21-422E-40D9-B9E7-E2B5B928692D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{B84132A1-B141-4AC6-827D-41268DAF2499}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LeadersOfDigital\LeadersOfDigital\LeadersOfDigital.projitems*{176ea03b-2a8b-476b-bcb8-eabe2dacacb7}*SharedItemsImports = 4
@@ -130,6 +132,18 @@ Global
 		{9D864E21-422E-40D9-B9E7-E2B5B928692D}.Release|iPhone.Build.0 = Release|Any CPU
 		{9D864E21-422E-40D9-B9E7-E2B5B928692D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9D864E21-422E-40D9-B9E7-E2B5B928692D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|iPhone.Build.0 = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B84132A1-B141-4AC6-827D-41268DAF2499}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
