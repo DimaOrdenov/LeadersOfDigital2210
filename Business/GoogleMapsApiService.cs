@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Business.Definitions.Models;
 using Business.Definitions.Requests;
 using Business.Definitions.Responses;
 using Microsoft.Extensions.Logging;
@@ -41,15 +42,26 @@ namespace Business
             return ExecuteAsync<GoogleDirectionsResponse>(request, token);
         }
 
-        public Task<GooglePlacesResponse> GetPlacesAsync(GoogleApiPlacesRequest data, CancellationToken token)
+        public Task<GooglePlacesResponse> GetPlacesAsync(string query, CancellationToken token)
         {
             IRestRequest request = new RestRequest("api/place/textsearch/json", Method.GET);
 
-            request.AddParameter("query", data.Query);
+            request.AddParameter("query", query);
             request.AddParameter("language", "ru");
             request.AddParameter("key", _googleApisKey);
 
             return ExecuteAsync<GooglePlacesResponse>(request, token);
+        }
+
+        public Task<GoogleGeocodeResponse> GetGeocodeAsync(Position position, CancellationToken token)
+        {
+            IRestRequest request = new RestRequest("api/geocode/json", Method.GET);
+
+            request.AddParameter("latlng", $"{position.Lat},{position.Lng}");
+            request.AddParameter("language", "ru");
+            request.AddParameter("key", _googleApisKey);
+
+            return ExecuteAsync<GoogleGeocodeResponse>(request, token);
         }
     }
 }

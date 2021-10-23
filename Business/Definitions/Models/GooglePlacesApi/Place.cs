@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Business.Definitions.Models.GooglePlacesApi
@@ -27,7 +28,9 @@ namespace Business.Definitions.Models.GooglePlacesApi
         // public PlusCode plus_code { get; set; }
         // public double rating { get; set; }
         // public string reference { get; set; }
-        // public List<string> types { get; set; }
+        
+        public List<string> Types { get; set; }
+        
         // public int user_ratings_total { get; set; }
     }
 }

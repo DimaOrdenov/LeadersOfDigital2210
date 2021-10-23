@@ -10,17 +10,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IfEqualToParameterConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNotNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Attributes\ImageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Exceptions\HumanReadableException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\BaseInteractionResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\ExtendedInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\IExtendedInteraction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PageStateType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PlaceType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\TransportType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelHandledAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CollectionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GoogleApiDirectionsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapperProfile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\MapSearchResultItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\MapViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\RouteItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Authorization\AuthorizationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\ProfileViewModel.cs" />

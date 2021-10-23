@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Definitions.Interactions;
 using LeadersOfDigital.Definitions;
 using LeadersOfDigital.Definitions.Exceptions;
 using Microsoft.Extensions.Logging;
@@ -26,8 +27,8 @@ namespace LeadersOfDigital.ViewModels
             NavigateBackCommand = new MvxCommand(() => navigationService.Close(this));
 
             _cancellationTokenSource = new CancellationTokenSource();
-            // CommonExceptionInteractionLocal = new ExtendedInteraction<BaseInteractionResult>();
-            // HumanReadableExceptionInteractionLocal = new ExtendedInteraction<BaseInteractionResult>();
+            CommonExceptionInteractionLocal = new ExtendedInteraction<BaseInteractionResult>();
+            HumanReadableExceptionInteractionLocal = new ExtendedInteraction<BaseInteractionResult>();
         }
 
         protected IMvxNavigationService NavigationService { get; }
@@ -63,13 +64,13 @@ namespace LeadersOfDigital.ViewModels
 
         public CancellationToken CancellationToken => _cancellationTokenSource?.Token ?? CancellationToken.None;
 
-        // public IExtendedInteraction<BaseInteractionResult> CommonExceptionInteraction => CommonExceptionInteractionLocal;
-        //
-        // public IExtendedInteraction<BaseInteractionResult> HumanReadableExceptionInteraction => HumanReadableExceptionInteractionLocal;
-        //
-        // protected ExtendedInteraction<BaseInteractionResult> CommonExceptionInteractionLocal { get; }
-        //
-        // protected ExtendedInteraction<BaseInteractionResult> HumanReadableExceptionInteractionLocal { get; }
+        public IExtendedInteraction<BaseInteractionResult> CommonExceptionInteraction => CommonExceptionInteractionLocal;
+
+        public IExtendedInteraction<BaseInteractionResult> HumanReadableExceptionInteraction => HumanReadableExceptionInteractionLocal;
+
+        protected ExtendedInteraction<BaseInteractionResult> CommonExceptionInteractionLocal { get; }
+
+        protected ExtendedInteraction<BaseInteractionResult> HumanReadableExceptionInteractionLocal { get; }
 
         public virtual void OnHardwareBackPressed()
         {
@@ -109,10 +110,10 @@ namespace LeadersOfDigital.ViewModels
                     State = PageStateType.Error;
                 }
 
-                // if (action.IsWithInteraction)
-                // {
-                //     HumanReadableExceptionInteractionLocal.Raise(new BaseInteractionResult(false) { ErrorMessage = error });
-                // }
+                if (action.IsWithInteraction)
+                {
+                    HumanReadableExceptionInteractionLocal.Raise(new BaseInteractionResult(false) { ErrorMessage = error });
+                }
             }
             catch (Exception ex)
             {
@@ -126,10 +127,10 @@ namespace LeadersOfDigital.ViewModels
                     State = PageStateType.Error;
                 }
 
-                // if (action.IsWithInteraction)
-                // {
-                //     CommonExceptionInteractionLocal.Raise(new BaseInteractionResult(false) { ErrorMessage = error });
-                // }
+                if (action.IsWithInteraction)
+                {
+                    CommonExceptionInteractionLocal.Raise(new BaseInteractionResult(false) { ErrorMessage = error });
+                }
             }
             finally
             {

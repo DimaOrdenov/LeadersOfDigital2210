@@ -1,10 +1,13 @@
+using Android.Content;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using LeadersOfDigital.Android.Bindings;
 using LeadersOfDigital.ViewModels.Map;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
+using Square.Picasso;
 
 namespace LeadersOfDigital.Android.Adapters
 {
@@ -42,6 +45,10 @@ namespace LeadersOfDigital.Android.Adapters
                 this.DelayBind(() =>
                 {
                     var set = this.CreateBindingSet<MapSearchResultsViewHolder, MapSearchResultItemViewModel>();
+                    
+                    set.Bind(_icon)
+                        .For(nameof(ImageViewBinding))
+                        .To(vm => vm.PlaceImage);
 
                     set.Bind(_title)
                         .For(x => x.Text)

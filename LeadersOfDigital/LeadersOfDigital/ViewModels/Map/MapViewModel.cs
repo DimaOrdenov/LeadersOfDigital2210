@@ -7,6 +7,8 @@ using Business.Definitions.Models.GooglePlacesApi;
 using Business.Definitions.Requests;
 using Business.Definitions.Responses;
 using DebounceThrottle;
+using LeadersOfDigital.Android.Definitions.Types;
+using LeadersOfDigital.Android.ViewModels.Map;
 using LeadersOfDigital.Definitions;
 using LeadersOfDigital.Definitions.Exceptions;
 using LeadersOfDigital.ViewModels.Map;
@@ -26,6 +28,8 @@ namespace LeadersOfDigital.ViewModels
         private GooglePlacesResponse _placesResponse;
         private Place _selectedDestination;
         private bool _isMyLocationEnabled;
+        private GoogleDirectionsResponse _googleDirectionsResponse;
+        private Position _myPosition;
 
         public MapViewModel(
             IMvxNavigationService navigationService,
@@ -39,7 +43,11 @@ namespace LeadersOfDigital.ViewModels
                 async searchText => await _debounceDispatcher.DebounceAsync(SearchAsync));
 
             ItemTapCommand = new MvxCommand<MapSearchResultItemViewModel>(
-                item => SelectedDestination = item.Place);
+                async item =>
+                {
+                    SelectedDestination = item.Place;
+                    await ClearSearchResultsAsync();
+                });
 
             SelectDestinationCommand = new MvxCommand<Position>(
                 async position =>
@@ -57,34 +65,53 @@ namespace LeadersOfDigital.ViewModels
                             {
                                 State = PageStateType.Loading;
 
-                                var placemarks = (await Geocoding.GetPlacemarksAsync(position.Lat, position.Lng))?.ToList();
+                                var geocodePlaces = await _googleMapsApiService.GetGeocodeAsync(position, CancellationToken);
 
-                                if (placemarks?.FirstOrDefault() is not { } firstPlacemark)
+                                if (geocodePlaces?.Results?.FirstOrDefault(x => x.Geometry?.LocationType == "GEOMETRIC_CENTER") is not { } firstPlace)
                                 {
-                                    destination.FormattedAddress = "Неизвестная локация";
-
                                     throw new HumanReadableException("Не удалось получить информацию о локации");
                                 }
 
-                                var addressStr = !string.IsNullOrEmpty(firstPlacemark.Thoroughfare) ? firstPlacemark.Thoroughfare : null;
-
-                                if (addressStr != null && !string.IsNullOrEmpty(firstPlacemark.SubThoroughfare))
-                                {
-                                    addressStr += $", {firstPlacemark.SubThoroughfare}";
-                                }
-
-                                destination.Name = firstPlacemark.FeatureName;
-                                destination.FormattedAddress = addressStr;
+                                destination.Name = firstPlace.AddressComponents?.FirstOrDefault(x => x.Types.Contains("administrative_area_level_2"))?.LongName;
+                                destination.FormattedAddress = $"{firstPlace.AddressComponents?.FirstOrDefault(x => x.Types.Contains("administrative_area_level_1"))?.LongName}, " +
+                                                               $"{firstPlace.AddressComponents?.FirstOrDefault(x => x.Types.Contains("country"))?.LongName}";
 
                                 SelectedDestination = destination;
                             })
-                        .SetCommonErrorMessage("Не удалось получить информацию о локации"));
+                        .SetCommonErrorMessage("Не удалось получить информацию о локации")
+                        .SetIsWithInteraction(true));
 
                     State = PageStateType.Content;
                 });
 
+            GetDirectionsCommand = new MvxCommand<GoogleApiDirectionsRequest>(
+                async request =>
+                {
+                    DirectionsResults.Clear();
+
+                    await PerformAsync(new ViewModelHandledAction(
+                            async () =>
+                            {
+                                var directionsResponse = await _googleMapsApiService.GetDirectionsAsync(
+                                    request,
+                                    CancellationToken);
+
+                                if (directionsResponse?.Routes?.Any() != true)
+                                {
+                                    throw new HumanReadableException("Не удалось получить маршруты");
+                                }
+
+                                DirectionsResults.AddRange(directionsResponse.Routes.Select(x => new RouteItemViewModel(x)));
+
+                                await RaisePropertyChanged(nameof(DirectionsResults));
+                            })
+                        .SetIsWithInteraction(true)
+                        .SetCommonErrorMessage("Не удалось получить маршруты"));
+                });
+
             _debounceDispatcher = new DebounceDispatcher(500);
             SearchResults = new MvxObservableCollection<MapSearchResultItemViewModel>();
+            DirectionsResults = new MvxObservableCollection<RouteItemViewModel>();
         }
 
         public string SearchText
@@ -96,7 +123,16 @@ namespace LeadersOfDigital.ViewModels
         public Place SelectedDestination
         {
             get => _selectedDestination;
-            set => SetProperty(ref _selectedDestination, value);
+            set
+            {
+                if (!SetProperty(ref _selectedDestination, value))
+                {
+                    return;
+                }
+
+                DirectionsResults.Clear();
+                RaisePropertyChanged(nameof(DirectionsResults));
+            }
         }
 
         public IMvxCommand<string> SearchCommand { get; }
@@ -105,12 +141,22 @@ namespace LeadersOfDigital.ViewModels
 
         public IMvxCommand<Position> SelectDestinationCommand { get; }
 
+        public IMvxCommand<GoogleApiDirectionsRequest> GetDirectionsCommand { get; }
+
         public MvxObservableCollection<MapSearchResultItemViewModel> SearchResults { get; }
+
+        public MvxObservableCollection<RouteItemViewModel> DirectionsResults { get; }
 
         public bool IsMyLocationEnabled
         {
             get => _isMyLocationEnabled;
             set => SetProperty(ref _isMyLocationEnabled, value);
+        }
+
+        public Position MyPosition
+        {
+            get => _myPosition;
+            set => SetProperty(ref _myPosition, value);
         }
 
         public override void ViewCreated()
@@ -128,8 +174,7 @@ namespace LeadersOfDigital.ViewModels
             {
                 State = PageStateType.Loading;
 
-                SearchResults.Clear();
-                await RaisePropertyChanged(nameof(SearchResults));
+                await ClearSearchResultsAsync();
 
                 _placesResponse = null;
 
@@ -140,7 +185,7 @@ namespace LeadersOfDigital.ViewModels
                     return;
                 }
 
-                _placesResponse = await _googleMapsApiService.GetPlacesAsync(new GoogleApiPlacesRequest { Query = _searchText }, CancellationToken);
+                _placesResponse = await _googleMapsApiService.GetPlacesAsync(_searchText, CancellationToken);
 
                 SearchResults.AddRange(
                     _placesResponse?
@@ -155,5 +200,11 @@ namespace LeadersOfDigital.ViewModels
 
                 State = PageStateType.Content;
             }));
+
+        private async Task ClearSearchResultsAsync()
+        {
+            SearchResults.Clear();
+            await RaisePropertyChanged(nameof(SearchResults));
+        }
     }
 }
