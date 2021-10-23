@@ -1,8 +1,12 @@
 ﻿<resources>
-    <dimen name="horizontal_content_padding">30dp</dimen>
+    <dimen name="authorization_horizontal_content_padding">30dp</dimen>
+    <dimen name="horizontal_content_padding">16dp</dimen>
+    <dimen name="top_content_padding">52dp</dimen>
+    <dimen name="bottom_content_padding">48dp</dimen>
     <dimen name="social_network_button_size">30dp</dimen>
-    <dimen name="bottom_content_padding">28dp</dimen>
+    <dimen name="authorization_bottom_content_padding">28dp</dimen>
     <dimen name="small_text_size">14sp</dimen>
     <dimen name="medium_text_size">20sp</dimen>
     <dimen name="large_text_size">38sp</dimen>
+    <dimen name="header_text_size">28dp</dimen>
 </resources>
