@@ -13,13 +13,11 @@ namespace LeadersOfDigital.Android.Adapters.Main
     public class MainViewPagerAdapter : FragmentStateAdapter
     {
         private Fragment[] _fragmentsArray;
-        private readonly FragmentActivity _activity;
 
         public MainViewPagerAdapter(FragmentActivity activity, int itemsCount)
             : base(activity)
         {
             ItemCount = itemsCount;
-            _activity = activity;
             _fragmentsArray = new Fragment[ItemCount];
         }
 
