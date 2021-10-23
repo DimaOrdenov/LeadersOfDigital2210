@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeadersWeb", "LeadersWeb\Le
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{4F61E81F-2B28-462F-ACEB-EA05E00C54F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeadersOfDigital.DataModels", "LeadersOfDigital.DataModels\LeadersOfDigital.DataModels.csproj", "{9D864E21-422E-40D9-B9E7-E2B5B928692D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeadersOfDigital.DataModels", "LeadersOfDigital.DataModels\LeadersOfDigital.DataModels.csproj", "{9D864E21-422E-40D9-B9E7-E2B5B928692D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{B84132A1-B141-4AC6-827D-41268DAF2499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{B84132A1-B141-4AC6-827D-41268DAF2499}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

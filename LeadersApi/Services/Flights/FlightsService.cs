@@ -27,7 +27,7 @@ namespace LeadersApi.Services.Flights
         public async Task<IEnumerable<Flight>> GetFlights(Iata origin, Iata destination, DateTime departure, DateTime @return)
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin={origin}&destination={destination}&currency=rub&departure_at={departure:yyyy-MM-dd}&return_at={@return:yyyy-MM-dd}&sorting=price&direct=true&limit=100&token={_token}");
+                $"https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin={origin}&destination={destination}&currency=rub&departure_at={departure:yyyy-MM-dd}" + ((@return!=DateTime.MinValue) ? $"&return_at={@return:yyyy-MM-dd}":null)+ $"&sorting=price&direct=true&limit=100&token={_token}");
 
             var client = _clientFactory.CreateClient();
 
