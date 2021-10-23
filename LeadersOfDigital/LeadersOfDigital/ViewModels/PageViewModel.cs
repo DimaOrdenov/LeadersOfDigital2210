@@ -150,7 +150,12 @@ namespace LeadersOfDigital.ViewModels
         {
         }
 
-        public abstract void Prepare(TParameter parameter);
+        public TParameter NavigationParameter { get; private set; }
+
+        public virtual void Prepare(TParameter parameter)
+        {
+            NavigationParameter = parameter;
+        }
     }
 
     public abstract class PageViewModel<TParameter, TResult> : PageViewModel<TParameter>, IMvxViewModel<TParameter, TResult>

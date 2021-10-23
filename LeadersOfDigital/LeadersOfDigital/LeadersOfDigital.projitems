@@ -37,6 +37,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\PopularViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\FavoritesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Main\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\ChooseTicketsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\TicketItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\TripSetupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToNullDateConverter.cs" />
   </ItemGroup>

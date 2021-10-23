@@ -4,9 +4,11 @@
     <color name="background">#F1F3F6</color>
     <color name="colorText">#22215B</color>
     <color name="colorText60">#9922215B</color>
+    <color name="colorSecondaryText">#7B7F9E</color>
     <color name="colorPrimary">#567DF4</color>
+    <color name="colorPrimaryDark">#3F68E3</color>
     <color name="colorAccent">#FB447C</color>
     <color name="colorSeparator">#5C3C3C43</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorSecondaryText">#7B7F9E</color>
+    <color name="colorAccentGreen">#65CC0F</color>
 </resources>

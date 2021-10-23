@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Locations;
@@ -35,7 +36,7 @@ using Location = Xamarin.Essentials.Location;
 namespace LeadersOfDigital.Android.Activities.Map
 {
     [MvxActivityPresentation]
-    [Activity]
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
     public partial class MapActivity : MvxActivity<MapViewModel>, IOnMapReadyCallback, GoogleMap.IOnPolylineClickListener, GoogleMap.IOnMapLongClickListener, GoogleMap.IOnMapClickListener,
         View.IOnClickListener, TextView.IOnEditorActionListener, View.IOnTouchListener
     {
