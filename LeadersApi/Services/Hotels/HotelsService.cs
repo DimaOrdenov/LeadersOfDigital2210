@@ -54,8 +54,10 @@ namespace LeadersApi.Services.Hotels
             var hotels = await GetHotels(city, from, to);
 
 
-            // TODO: подбор по бюджету и локации (по интересам пользователя)
-            var hotel = hotels.FirstOrDefault();
+            // TODO: подбор по локации (по интересам пользователя)
+            var hotel = hotels.Where(x=>
+            (x.priceAvg + currentBudget) < maxBudget) //входим в бюджет
+                .FirstOrDefault();
 
             return hotel;
         }
