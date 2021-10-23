@@ -26,10 +26,10 @@ namespace LeadersOfDigital.Android.Adapters.Main
         public override Fragment CreateFragment(int p0) =>
             p0 switch
             {
-                0 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new MainFragment { ViewModel = new MainViewModel(Mvx.IoCProvider.Resolve<IMvxNavigationService>(), Mvx.IoCProvider.Resolve<ILogger<MainViewModel>>()) }),
-                1 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new FavoritesFragment { ViewModel =  new FavoritesViewModel(Mvx.IoCProvider.Resolve<IMvxNavigationService>(), Mvx.IoCProvider.Resolve<ILogger<FavoritesViewModel>>()) }),
-                2 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new PopularFragment { ViewModel = new PopularViewModel(Mvx.IoCProvider.Resolve<IMvxNavigationService>(), Mvx.IoCProvider.Resolve<ILogger<PopularViewModel>>()) }),
-                3 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new ProfileFragment { ViewModel = new ProfileViewModel(Mvx.IoCProvider.Resolve<IMvxNavigationService>(), Mvx.IoCProvider.Resolve<ILogger<ProfileViewModel>>()) }),
+                0 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new MainFragment { ViewModel = Mvx.IoCProvider.Resolve<MainViewModel>() }),
+                1 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new FavoritesFragment { ViewModel = Mvx.IoCProvider.Resolve<FavoritesViewModel>() }),
+                2 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new PopularFragment { ViewModel = Mvx.IoCProvider.Resolve<PopularViewModel>() }),
+                3 => _fragmentsArray[p0] ?? (_fragmentsArray[p0] = new ProfileFragment { ViewModel = Mvx.IoCProvider.Resolve<ProfileViewModel>() }),
                 _ => throw new NotImplementedException(),
             };
     }
