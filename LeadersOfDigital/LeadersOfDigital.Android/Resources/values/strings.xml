@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, Click Me!</string>
-    <string name="app_name">NoTryCatch</string>
+    <string name="app_name">SelfTrip</string>
     <string name="welcome">Добро пожаловать в</string>
     <string name="authorize">Авторизоваться</string>
     <string name="login_via_networks">Вход через социальные сети</string>
+    <string name="app_short_description">Приложение для путешественников</string>
     <string name="app_description">Это мобильное приложение путешественника с помощью которого вы сможете составить личный крутой маршрут</string>
     <string name="continue_without_login">Продолжить без регистрации</string>
     <string name="main">Главная</string>
@@ -15,4 +16,15 @@
     <string name="no_trips">Вы еще никуда не выезжали</string>
     <string name="user_name">Иннокентий Петрович</string>
     <string name="user_status">Безнадженый путешественник</string>
+    <string name="route">Маршрут</string>
+    <string name="setup_trip">Настройте путешествие</string>
+    <string name="stops">Остановки</string>
+    <string name="driving_time">Время за рулем</string>
+    <string name="food_types">Выберите тип питания</string>
+    <string name="one_way_route">Едем в одну сторону</string>
+    <string name="do_not_want_to_sleep_at_night">Не хочу ночью</string>
+    <string name="want_to_sleep_at_night">Хочу ночью спать</string>
+    <string name="need_food_on_the_way">Нужно питание в пути</string>
+    <string name="find_tickets">Найти билеты</string>
+    <string name="add_friend">+ Добавить друга</string>
 </resources>

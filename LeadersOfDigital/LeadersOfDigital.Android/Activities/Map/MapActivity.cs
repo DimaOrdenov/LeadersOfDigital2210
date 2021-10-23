@@ -199,8 +199,9 @@ namespace LeadersOfDigital.Android.Activities.Map
 
                     break;
                 case Resource.Id.map_bottom_sheet_open_maps:
-                    Uri gmmIntentUri = Uri.Parse($"geo:{destination.Latitude},{destination.Longitude}");
-                    Intent mapIntent = new Intent(Intent.ActionView, gmmIntentUri);
+                    Intent mapIntent = new Intent(Intent.ActionView, Uri.Parse(ViewModel.MyPosition != null ?
+                        $"https://www.google.com/maps/dir/{destination.Latitude},{destination.Longitude}/{ViewModel.MyPosition.Lat},{ViewModel.MyPosition.Lng}/" :
+                        $"geo:{destination.Latitude},{destination.Longitude}"));
                     // mapIntent.setPackage("com.google.android.apps.maps");
                     StartActivity(mapIntent);
 
