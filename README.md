@@ -30,4 +30,4 @@ SelfTrip - мобильное приложение для путешествен
 - AviasalesToken можно получить тут https://app.travelpayouts.com
 - Открыть в Visual Studio LeadersOfDigital.sln
 - Запустить проект LeadersApi
-
+- В целях разработки список отелей закеширован. Чтобы отключить - необходимо удалить использование IMemoryCache из HotelsService.GetHotels(), либо установить длительность кэширования 0.
