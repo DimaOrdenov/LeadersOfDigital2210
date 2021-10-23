@@ -8,6 +8,9 @@ namespace LeadersOfDigital.ViewModels.Setup
 {
     public class TripSetupViewModel : PageViewModel
     {
+        private DateTime? _startDate;
+        private DateTime? _endDate;
+
         public IMvxAsyncCommand AddFriendCommand { get; }
         public IMvxAsyncCommand FindTicketsCommand { get; }
 
@@ -18,8 +21,16 @@ namespace LeadersOfDigital.ViewModels.Setup
             AddFriendCommand = new MvxAsyncCommand(() => Task.FromResult(true));
         }
 
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDate
+        {
+            get => _startDate;
+            set => SetProperty(ref _startDate, value);
+        }
 
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDate
+        {
+            get => _endDate;
+            set => SetProperty(ref _endDate, value);
+        }
     }
 }
