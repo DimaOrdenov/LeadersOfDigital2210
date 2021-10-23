@@ -6,4 +6,5 @@
     <color name="colorText60">#9922215B</color>
     <color name="colorPrimary">#567DF4</color>
     <color name="colorAccent">#FB447C</color>
+    <color name="colorSeparator">#5C3C3C43</color>
 </resources>

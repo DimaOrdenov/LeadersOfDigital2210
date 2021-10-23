@@ -1,0 +1,692 @@
+﻿<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/horizontal_content_padding"
+        android:paddingBottom="@dimen/bottom_content_padding"
+        android:paddingTop="@dimen/top_content_padding">
+
+        <LinearLayout
+            android:id="@+id/header_layout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/route"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/header_text_size"
+                android:textColor="@color/colorText"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0₽"
+                android:layout_marginHorizontal="4dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorAccent"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="/"
+                android:layout_marginHorizontal="4dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0₽"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/route_points_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_layout"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:background="@drawable/ripple_rounded_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView android:src="@drawable/ic_rocket"
+                    android:scaleType="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="11dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Балашиха"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/colorText"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Россия, Московская область, г. Балашиха, мкрн. Железнодорожный, ул. Маяковского 22"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:backgroundTint="@color/colorSeparator"
+                android:layout_marginVertical="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView android:src="@drawable/ic_flag"
+                    android:scaleType="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="11dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Сочи"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/colorText"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Россия, Краснодарский край, городской округ Сочи, аэропорт Сочи (Адлер) имени В.И. Севастьянова"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/setup_route_textview"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/route_points_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/setup_trip"
+            android:fontFamily="@font/gilroy_bold"
+            android:textSize="@dimen/header_text_size"
+            android:textColor="@color/colorText"/>
+
+        <HorizontalScrollView
+            android:id="@+id/transport_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/setup_route_textview">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/map_bottom_sheet_airplane"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_rounded_accent"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView android:id="@+id/map_bottom_sheet_airplane_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_airplane_takeoff"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView android:id="@+id/map_bottom_sheet_airplane_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:text="Самолетом"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_airplane_icon"
+                        app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_airplane_icon"/>
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_regular"
+                        android:text="от 4200 / чел"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_airplane_title"
+                        app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_airplane_title"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/map_bottom_sheet_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/ripple_rounded_white"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_airplane"
+                    app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_airplane">
+
+                    <ImageView android:id="@+id/map_bottom_sheet_train_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_train"
+                        app:tint="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView android:id="@+id/map_bottom_sheet_train_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:text="Поездом"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_train_icon"
+                        app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_train_icon"/>
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_regular"
+                        android:text="от 1800 / чел"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_train_title"
+                        app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_train_title"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/map_bottom_sheet_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/ripple_rounded_white"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_train"
+                    app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_train">
+
+                    <ImageView android:id="@+id/map_bottom_sheet_car_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_car"
+                        app:tint="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView android:id="@+id/map_bottom_sheet_car_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:text="Автомобилем"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_car_icon"
+                        app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_car_icon"/>
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_regular"
+                        android:text="от 8000 / в одну сторону"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_car_title"
+                        app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_car_title"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </HorizontalScrollView>
+
+
+        <EditText
+            android:hint="Укажите стоимость"
+            android:inputType="number"
+            android:id="@+id/trip_cost"
+            android:fontFamily="@font/gilroy_regular"
+            android:textSize="@dimen/small_text_size"
+            android:drawableRight="@drawable/ic_ruble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transport_type"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/ripple_rounded_white"/>
+
+        <LinearLayout
+            android:id="@+id/period_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trip_cost"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:clickable="true"
+                android:id="@+id/trip_start_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/ripple_rounded_white">
+
+                <TextView
+                    android:id="@+id/trip_start_date_textview"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="01.11.2021"
+                    android:layout_marginRight="40dp"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/colorText"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_calendar" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="1dp"
+                android:backgroundTint="@color/colorSeparator"
+                android:layout_marginVertical="16dp"/>
+
+            <LinearLayout
+                android:clickable="true"
+                android:id="@+id/trip_end_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/ripple_rounded_white">
+
+                <TextView
+                    android:id="@+id/trip_end_date_textview"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="07.11.2021"
+                    android:layout_marginRight="40dp"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/colorText"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_calendar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/users_categories_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/period_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/ripple_rounded_white">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2 взрослых"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_arrow_down" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stops_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/period_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/ripple_rounded_white">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/stops"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_arrow_down" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/driving_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stops_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/ripple_rounded_white">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/driving_time"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_clock" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/one_way_route_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driving_time_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <Switch
+                style="@style/SwitchStyle"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/one_way_route"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/do_not_want_sleep_at_night_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/one_way_route_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <Switch
+                style="@style/SwitchStyle"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/do_not_want_to_sleep_at_night"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/want_to_sleep_at_night_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/do_not_want_sleep_at_night_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <Switch
+                style="@style/SwitchStyle"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/want_to_sleep_at_night"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/need_food_on_the_way_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/want_to_sleep_at_night_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <Switch
+                style="@style/SwitchStyle"
+                android:checked="true"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/need_food_on_the_way"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/food_types_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/need_food_on_the_way_layout"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/ripple_rounded_white">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/food_types"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_arrow_down" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="16dp"
+            android:padding="0dp"
+            android:id="@+id/add_friend_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/food_types_layout"
+            android:text="@string/add_friend"/>
+
+        <Button
+            android:layout_marginTop="24dp"
+            android:id="@+id/find_tickets_button"
+            style="@style/PrimaryButtonStyle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_friend_button"
+            android:text="@string/find_tickets"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

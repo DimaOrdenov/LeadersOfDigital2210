@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LeadersOfDigital.ViewModels.Setup;
+using Microsoft.Extensions.Logging;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -11,7 +12,7 @@ namespace LeadersOfDigital.ViewModels.Main
         public MainViewModel(IMvxNavigationService navigationService, ILogger<MainViewModel> logger)
             : base(navigationService, logger)
         {
-            StartPlanningCommand = new MvxAsyncCommand(() => navigationService.Navigate<MapViewModel>());
+            StartPlanningCommand = new MvxAsyncCommand(() => navigationService.Navigate<TripSetupViewModel>());
         }
     }
 }
