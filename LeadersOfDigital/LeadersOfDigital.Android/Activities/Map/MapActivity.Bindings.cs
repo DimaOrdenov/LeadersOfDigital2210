@@ -43,6 +43,10 @@ namespace LeadersOfDigital.Android.Activities.Map
                 .OneWay();
             
 
+            set.Bind(_buildRoute)
+                .For(x => x.BindClick())
+                .To(vm => vm.SetupTripCommand);
+
             set.Apply();
 
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;

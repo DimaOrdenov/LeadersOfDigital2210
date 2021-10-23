@@ -13,6 +13,7 @@ using LeadersOfDigital.Android.ViewModels.Map;
 using LeadersOfDigital.Definitions;
 using LeadersOfDigital.Definitions.Exceptions;
 using LeadersOfDigital.ViewModels.Map;
+using LeadersOfDigital.ViewModels.Setup;
 using Microsoft.Extensions.Logging;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
@@ -42,6 +43,17 @@ namespace LeadersOfDigital.ViewModels
 
             SearchCommand = new MvxCommand<string>(
                 async searchText => await _debounceDispatcher.DebounceAsync(SearchAsync));
+
+            SetupTripCommand = new MvxAsyncCommand<string>(
+                async searchText =>
+                {
+                    if (SelectedDestination == null)
+                    {
+                        return;
+                    }
+
+                    await navigationService.Navigate<TripSetupViewModel>();
+                });
 
             ItemTapCommand = new MvxCommand<MapSearchResultItemViewModel>(
                 async item =>
@@ -137,7 +149,7 @@ namespace LeadersOfDigital.ViewModels
         }
 
         public IMvxCommand<string> SearchCommand { get; }
-
+        public IMvxAsyncCommand<string> SetupTripCommand { get; }
         public IMvxCommand<MapSearchResultItemViewModel> ItemTapCommand { get; }
 
         public IMvxCommand<Position> SelectDestinationCommand { get; }
