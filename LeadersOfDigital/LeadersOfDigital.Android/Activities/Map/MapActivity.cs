@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Locations;
+using Android.Net;
 using Android.OS;
 using Android.Views;
 using Android.Views.InputMethods;
@@ -28,6 +30,7 @@ using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.Platforms.Android.Views;
+using Location = Xamarin.Essentials.Location;
 
 namespace LeadersOfDigital.Android.Activities.Map
 {
@@ -38,6 +41,8 @@ namespace LeadersOfDigital.Android.Activities.Map
     {
         private readonly LocationListener _locationListener;
         private readonly IList<Polyline> _mapPolylines;
+        private readonly int _defaultZoom = 6;
+        private readonly int _defaultPolylinesPadding = 400;
 
         private LocationManager _locationManager;
 
@@ -57,8 +62,7 @@ namespace LeadersOfDigital.Android.Activities.Map
         private ImageButton _zoomIn;
         private ImageButton _zoomOut;
         private ImageButton _myLocation;
-        private readonly int _defaultZoom = 6;
-        private readonly int _defaultPolylinesPadding = 400;
+        private Button _openMaps;
 
         public MapActivity()
         {
@@ -181,7 +185,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                     break;
                 case Resource.Id.map_zoom_out:
                     _googleMap.AnimateCamera(CameraUpdateFactory.ZoomOut());
-
+                    
                     break;
                 case Resource.Id.map_my_location:
                     if (ViewModel.MyPosition == null)
@@ -192,6 +196,13 @@ namespace LeadersOfDigital.Android.Activities.Map
                     }
 
                     _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(ViewModel.MyPosition.ToLatLng(), _defaultZoom));
+
+                    break;
+                case Resource.Id.map_bottom_sheet_open_maps:
+                    Uri gmmIntentUri = Uri.Parse($"geo:{destination.Latitude},{destination.Longitude}");
+                    Intent mapIntent = new Intent(Intent.ActionView, gmmIntentUri);
+                    // mapIntent.setPackage("com.google.android.apps.maps");
+                    StartActivity(mapIntent);
 
                     break;
             }
@@ -265,6 +276,7 @@ namespace LeadersOfDigital.Android.Activities.Map
             _zoomIn = FindViewById<ImageButton>(Resource.Id.map_zoom_in);
             _zoomOut = FindViewById<ImageButton>(Resource.Id.map_zoom_out);
             _myLocation = FindViewById<ImageButton>(Resource.Id.map_my_location);
+            _openMaps = FindViewById<Button>(Resource.Id.map_bottom_sheet_open_maps);
 
             _bottomSheetBehaviour.Hideable = true;
             _bottomSheetBehaviour.Draggable = false;
@@ -308,6 +320,7 @@ namespace LeadersOfDigital.Android.Activities.Map
             _zoomIn.SetOnClickListener(this);
             _zoomOut.SetOnClickListener(this);
             _myLocation.SetOnClickListener(this);
+            _openMaps.SetOnClickListener(this);
 
             AddBindings(adapter);
 

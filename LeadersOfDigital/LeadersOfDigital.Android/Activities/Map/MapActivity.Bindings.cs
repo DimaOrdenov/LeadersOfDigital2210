@@ -6,6 +6,7 @@ using Android.Views;
 using Google.Android.Material.BottomSheet;
 using LeadersOfDigital.Android.Adapters;
 using LeadersOfDigital.Android.Helpers;
+using MvvmCross.Platforms.Android.Binding;
 
 namespace LeadersOfDigital.Android.Activities.Map
 {
@@ -40,6 +41,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                 .For(x => x.HumanReadableExceptionInteraction)
                 .To(vm => vm.HumanReadableExceptionInteraction)
                 .OneWay();
+            
 
             set.Apply();
 
