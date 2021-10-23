@@ -3,6 +3,7 @@ using System.Linq;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Views;
+using Android.Widget;
 using Google.Android.Material.BottomSheet;
 using LeadersOfDigital.Android.Adapters;
 using LeadersOfDigital.Android.Helpers;
@@ -46,6 +47,10 @@ namespace LeadersOfDigital.Android.Activities.Map
             set.Bind(_buildRoute)
                 .For(x => x.BindClick())
                 .To(vm => vm.SetupTripCommand);
+
+            set.Bind(FindViewById<ImageButton>(Resource.Id.back_button))
+                .For(x => x.BindClick())
+                .To(vm => vm.NavigateBackCommand);
 
             set.Apply();
 
