@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -24,39 +23,11 @@ namespace Business
             _logger = logger;
         }
 
-        // protected async Task<bool> ExecuteAsync(IRestRequest request, CancellationToken token)
-        // {
-        //     request.Timeout = Timeout;
-        //
-        //     Guid guid = Guid.NewGuid();
-        //
-        //     if (BeforeRequest != null)
-        //     {
-        //         BeforeRequest.Invoke(request, guid.ToString());
-        //         request.AdvancedResponseWriter = (input, resp) => resp.RawBytes = ReadAsBytes(input);
-        //     }
-        //
-        //     var response = await _client.ExecuteAsync(request, token);
-        //
-        //     if (AfterRequest != null)
-        //     {
-        //         AfterRequest.Invoke(request, response, guid.ToString());
-        //     }
-        //
-        //     if (!response.IsSuccessful)
-        //     {
-        //         CheckResponse(response);
-        //     }
-        //
-        //     return response.IsSuccessful;
-        // }
-
         protected async Task<TOut> ExecuteAsync<TOut>(IRestRequest request, CancellationToken token)
         {
             Guid guid = Guid.NewGuid();
 
             BeforeRequest(request, guid.ToString());
-            request.AdvancedResponseWriter = (input, resp) => resp.RawBytes = ReadAsBytes(input);
 
             var response = await _client.ExecuteAsync(request, token);
 
@@ -70,6 +41,15 @@ namespace Business
             return JsonConvert.DeserializeObject<TOut>(response.Content);
         }
 
+        private void BeforeRequest(IRestRequest request, string message) =>
+            _logger?.LogDebug(
+                new StringBuilder()
+                    .AppendLine(message + " | Request: ")
+                    .AppendLine(request.Method + " :: " + _client.BaseUrl + request.Resource)
+                    .AppendJoin(Environment.NewLine, request.Parameters.Select(param => $"{param.Name} = {JsonConvert.SerializeObject(param.Value)}"))
+                    .AppendLine()
+                    .ToString());
+
         private void AfterRequest(IRestRequest request, IRestResponse response, string message) =>
             _logger?.LogDebug(
                 new StringBuilder()
@@ -80,38 +60,6 @@ namespace Business
                     .AppendLine("Error: " + response.ErrorMessage)
                     .AppendLine("Content: " + response.Content)
                     .ToString());
-
-        private void BeforeRequest(IRestRequest request, string message) =>
-            _logger?.LogDebug(
-                new StringBuilder()
-                    .AppendLine(message + " | Request: ")
-                    .AppendLine(request.Method + " :: " + _client.BaseUrl + request.Resource)
-                    .AppendJoin(Environment.NewLine, request.Parameters.Select(param => $"{param.Name} = {JsonConvert.SerializeObject(param.Value)}"))
-                    .ToString());
-
-        private byte[] ReadAsBytes(Stream input)
-        {
-            var buffer = new byte[16 * 1024];
-
-            using (var ms = new MemoryStream())
-            {
-                int read;
-
-                try
-                {
-                    while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        ms.Write(buffer, 0, read);
-                    }
-
-                    return ms.ToArray();
-                }
-                catch (WebException ex)
-                {
-                    return Encoding.UTF8.GetBytes(ex.Message);
-                }
-            }
-        }
 
         private void CheckResponse(IRestResponse response)
         {

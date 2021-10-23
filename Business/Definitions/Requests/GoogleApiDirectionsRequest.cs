@@ -6,14 +6,7 @@ namespace Business.Definitions.Requests
 {
     public class GoogleApiDirectionsRequest
     {
-        // public GoogleApiDirectionsRequest(Position origin, Position destination, string travelMode = "walking")
-        // {
-        //     Origin = origin;
-        //     Destination = destination;
-        //     TravelMode = travelMode;
-        // }
-
-        public GoogleApiDirectionsRequest(Func<Position> origin, Func<Position> destination, string travelMode = "walking", bool isProvideAlternatives = true)
+        public GoogleApiDirectionsRequest(Func<Position> origin, Func<Position> destination, string travelMode = "driving", bool isProvideAlternatives = true)
         {
             Origin = origin;
             Destination = destination;

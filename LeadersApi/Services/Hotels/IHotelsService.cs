@@ -9,5 +9,6 @@ namespace LeadersApi.Services.Hotels
     public interface IHotelsService
     {
         Task<IEnumerable<Hotel>> GetHotels(Cities city, DateTime from, DateTime to);
+        Task<Hotel> GetSuggestedHotel(int maxBudget, int currentBudget, Cities city, DateTime from, DateTime to);
     }
 }

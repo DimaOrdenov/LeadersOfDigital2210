@@ -1,20 +1,12 @@
 ﻿using AutoMapper;
-using LeadersApi.Models.Responses.Flights;
-using LeadersApi.Models.Responses.Hotels;
 using LeadersApi.Services.Flights;
 using LeadersOfDigital.DataModels.Enums;
 using LeadersOfDigital.DataModels.Responses.Flights;
-using LeadersOfDigital.DataModels.Responses.Hotels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace LeadersApi.Controllers
@@ -27,7 +19,6 @@ namespace LeadersApi.Controllers
         private readonly IMapper _mapper;
         private readonly IFlightsService _flightsService;
 
-
         public FlightsController(ILogger<HotelsController> logger, IMapper mapper, IFlightsService flightsService)
         {
             _logger = logger;
@@ -36,7 +27,7 @@ namespace LeadersApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAsync(Iata origin, Iata destination,DateTime departure, DateTime @return)
+        public async Task<IActionResult> GetAsync(Iata origin, Iata destination, DateTime departure, DateTime @return)
         {
             try
             {
@@ -56,6 +47,5 @@ namespace LeadersApi.Controllers
                 return BadRequest("Ошибка поиска билетов");
             }
         }
-
     }
 }

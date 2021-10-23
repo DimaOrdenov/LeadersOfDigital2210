@@ -1,7 +1,7 @@
 using Android.Gms.Maps.Model;
-using Business.Definitions.Models;
+using LeadersOfDigital.Android.Helpers;
 
-namespace LeadersOfDigital.Android.Activities
+namespace LeadersOfDigital.Android.Activities.Map
 {
     public partial class MapActivity
     {
@@ -11,7 +11,7 @@ namespace LeadersOfDigital.Android.Activities
 
         public void OnMapLongClick(LatLng point)
         {
-            ViewModel.SelectDestinationCommand.Execute(new Position(point.Latitude, point.Longitude));
+            ViewModel.SelectDestinationCommand.Execute(point.ToPosition());
         }
 
         public void OnMapClick(LatLng point)

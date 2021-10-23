@@ -1,11 +1,13 @@
 using System.ComponentModel;
 using System.Linq;
+using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Views;
 using Google.Android.Material.BottomSheet;
 using LeadersOfDigital.Android.Adapters;
+using LeadersOfDigital.Android.Helpers;
 
-namespace LeadersOfDigital.Android.Activities
+namespace LeadersOfDigital.Android.Activities.Map
 {
     public partial class MapActivity
     {
@@ -21,10 +23,6 @@ namespace LeadersOfDigital.Android.Activities
                 .For(x => x.ItemsSource)
                 .To(vm => vm.SearchResults);
 
-            set.Bind(adapter)
-                .For(x => x.ItemClick)
-                .To(vm => vm.ItemTapCommand);
-
             set.Bind(_chosenDestinationTitle)
                 .For(x => x.Text)
                 .To(vm => vm.SelectedDestination.Name);
@@ -32,6 +30,16 @@ namespace LeadersOfDigital.Android.Activities
             set.Bind(_chosenDestinationAddress)
                 .For(x => x.Text)
                 .To(vm => vm.SelectedDestination.FormattedAddress);
+
+            set.Bind(this)
+                .For(x => x.CommonExceptionInteraction)
+                .To(vm => vm.CommonExceptionInteraction)
+                .OneWay();
+
+            set.Bind(this)
+                .For(x => x.HumanReadableExceptionInteraction)
+                .To(vm => vm.HumanReadableExceptionInteraction)
+                .OneWay();
 
             set.Apply();
 
@@ -52,8 +60,35 @@ namespace LeadersOfDigital.Android.Activities
                     if (_mapMarker != null &&
                         ViewModel.SelectedDestination != null)
                     {
-                        _mapMarker.Position = new LatLng(ViewModel.SelectedDestination.Geometry.Location.Lat, ViewModel.SelectedDestination.Geometry.Location.Lng);
+                        _mapMarker.Position = ViewModel.SelectedDestination.Geometry.Location.ToLatLng();
                     }
+
+                    DeactivateTransportTabs();
+
+                    break;
+                case nameof(ViewModel.DirectionsResults):
+                    if (!ViewModel.DirectionsResults.Any())
+                    {
+                        TryRemovePolylines();
+
+                        break;
+                    }
+
+                    var boundsBuilder = new LatLngBounds.Builder();
+
+                    foreach (var route in ViewModel.DirectionsResults)
+                    {
+                        var polylinePoints = route.Points.Select(x => x.ToLatLng()).ToArray();
+
+                        AddPolyline(polylinePoints);
+
+                        foreach (var point in polylinePoints)
+                        {
+                            boundsBuilder.Include(point);
+                        }
+                    }
+
+                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(boundsBuilder.Build(), _defaultPolylinesPadding));
 
                     break;
             }

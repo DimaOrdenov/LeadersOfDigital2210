@@ -11,7 +11,7 @@ namespace LeadersOfDigital.Android.Activities
 {
     [MvxActivityPresentation]
     [Activity]
-    public class MainActivity : MvxActivity<MainViewModel>
+    public class MainTabbedActivity : MvxActivity<MainTabbedViewModel>
     {
         private ViewPager2 _viewPager;
         private BottomNavigationView _navigationView;
@@ -19,7 +19,7 @@ namespace LeadersOfDigital.Android.Activities
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.MainActivity);
+            SetContentView(Resource.Layout.MainTabbedActivity);
 
             _viewPager = FindViewById<ViewPager2>(Resource.Id.main_view_pager);
             _navigationView = FindViewById<BottomNavigationView>(Resource.Id.bottom_nav);
@@ -36,15 +36,19 @@ namespace LeadersOfDigital.Android.Activities
             {
                 case Resource.Id.action_main:
                     _viewPager?.SetCurrentItem(0, true);
+
                     break;
                 case Resource.Id.action_favorites:
                     _viewPager?.SetCurrentItem(1, true);
+
                     break;
                 case Resource.Id.action_popular:
                     _viewPager?.SetCurrentItem(2, true);
+
                     break;
                 case Resource.Id.action_profile:
                     _viewPager?.SetCurrentItem(3, true);
+
                     break;
             }
         }

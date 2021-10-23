@@ -10,7 +10,46 @@
               android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent">
+                                                       android:layout_height="match_parent"
+                                                       android:clipToPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content"
+                                                           android:layout_marginTop="90dp"
+                                                           android:clipToPadding="false"
+                                                           android:orientation="vertical"
+                                                           android:padding="16dp"
+                                                           app:layout_constraintEnd_toEndOf="parent"
+                                                           app:layout_constraintTop_toBottomOf="@id/map_search_text">
+
+            <ImageButton android:id="@+id/map_zoom_in"
+                         style="@style/MainTheme.MapImageButton"
+                         android:background="@drawable/ripple_rounded_white"
+                         android:src="@drawable/ic_plus"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton android:id="@+id/map_zoom_out"
+                         style="@style/MainTheme.MapImageButton"
+                         android:layout_marginTop="24dp"
+                         android:background="@drawable/ripple_rounded_white"
+                         android:src="@drawable/ic_minus"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@id/map_zoom_in" />
+
+            <ImageButton android:id="@+id/map_my_location"
+                         style="@style/MainTheme.MapImageButton"
+                         android:layout_marginTop="48dp"
+                         android:background="@drawable/ripple_rounded_white"
+                         android:src="@drawable/ic_my_location"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@id/map_zoom_out" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText android:id="@+id/map_search_text"
                   android:layout_width="match_parent"
@@ -18,10 +57,13 @@
                   android:layout_marginHorizontal="16dp"
                   android:layout_marginTop="44dp"
                   android:background="@drawable/rounded_background_white"
+                  android:drawableEnd="@drawable/ic_clear"
+                  android:drawablePadding="4dp"
                   android:elevation="10dp"
                   android:fontFamily="@font/gilroy_medium"
                   android:gravity="center_vertical"
                   android:hint="Поиск адреса"
+                  android:imeOptions="actionSearch"
                   android:inputType="text"
                   android:maxLines="1"
                   android:paddingHorizontal="16dp"
@@ -38,6 +80,7 @@
                                                        android:elevation="10dp"
                                                        android:background="@drawable/rounded_background_white"
                                                        android:visibility="gone"
+                                                       android:clipChildren="true"
                                                        app:layout_constraintHeight_percent=".4"
                                                        app:layout_constraintTop_toBottomOf="@id/map_search_text"/>
 
@@ -65,24 +108,26 @@
                            app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_from_city"/>
 
                 <TextView android:id="@+id/map_bottom_sheet_from_city"
-                          android:layout_width="wrap_content"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="8dp"
+                          android:layout_marginHorizontal="8dp"
                           android:layout_marginTop="16dp"
                           android:fontFamily="@font/gilroy_bold"
                           android:text="Сочи"
                           android:textColor="@color/colorText"
                           android:textSize="16sp"
+                          app:layout_constraintEnd_toStartOf="@id/map_bottom_sheet_close"
                           app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_pin"
                           app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView android:id="@+id/map_bottom_sheet_from_address"
-                          android:layout_width="wrap_content"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:fontFamily="@font/gilroy_regular"
                           android:text="Краснодарский край, Россия"
                           android:textColor="@color/colorText"
                           android:textSize="16sp"
+                          app:layout_constraintEnd_toEndOf="@id/map_bottom_sheet_from_city"
                           app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_from_city"
                           app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_from_city"/>
 
@@ -122,7 +167,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/map_bottom_sheet_airplane"
                                                                            android:layout_width="wrap_content"
                                                                            android:layout_height="wrap_content"
-                                                                           android:background="@drawable/ripple_rounded_accent"
+                                                                           android:background="@drawable/ripple_rounded_white"
                                                                            android:paddingHorizontal="16dp"
                                                                            android:paddingVertical="12dp"
                                                                            app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +178,8 @@
                                        android:layout_height="24dp"
                                        android:src="@drawable/ic_airplane_takeoff"
                                        app:layout_constraintStart_toStartOf="parent"
-                                       app:layout_constraintTop_toTopOf="parent"/>
+                                       app:layout_constraintTop_toTopOf="parent"
+                                       android:tint="@color/colorText"/>
 
                             <TextView android:id="@+id/map_bottom_sheet_airplane_title"
                                       android:layout_width="wrap_content"
@@ -141,16 +187,17 @@
                                       android:layout_marginStart="8dp"
                                       android:fontFamily="@font/gilroy_bold"
                                       android:text="Самолетом"
-                                      android:textColor="@android:color/white"
+                                      android:textColor="@color/colorText"
                                       android:textSize="16sp"
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_airplane_icon"
                                       app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_airplane_icon"/>
 
-                            <TextView android:layout_width="wrap_content"
+                            <TextView android:id="@+id/map_bottom_sheet_airplane_price"
+                                      android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:fontFamily="@font/gilroy_regular"
                                       android:text="от 4200 / чел"
-                                      android:textColor="@android:color/white"
+                                      android:textColor="@color/colorText"
                                       android:textSize="14sp"
                                       app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_airplane_title"
                                       app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_airplane_title"/>
@@ -171,7 +218,7 @@
                                        android:layout_width="24dp"
                                        android:layout_height="24dp"
                                        android:src="@drawable/ic_train"
-                                       android:tint="@android:color/black"
+                                       android:tint="@color/colorText"
                                        app:layout_constraintStart_toStartOf="parent"
                                        app:layout_constraintTop_toTopOf="parent"/>
 
@@ -186,7 +233,8 @@
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_train_icon"
                                       app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_train_icon"/>
 
-                            <TextView android:layout_width="wrap_content"
+                            <TextView android:id="@+id/map_bottom_sheet_train_price"
+                                      android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:fontFamily="@font/gilroy_regular"
                                       android:text="от 1800 / чел"
@@ -211,7 +259,7 @@
                                        android:layout_width="24dp"
                                        android:layout_height="24dp"
                                        android:src="@drawable/ic_car"
-                                       android:tint="@android:color/black"
+                                       android:tint="@color/colorText"
                                        app:layout_constraintStart_toStartOf="parent"
                                        app:layout_constraintTop_toTopOf="parent"/>
 
@@ -226,7 +274,8 @@
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_car_icon"
                                       app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_car_icon"/>
 
-                            <TextView android:layout_width="wrap_content"
+                            <TextView android:id="@+id/map_bottom_sheet_car_price"
+                                      android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:fontFamily="@font/gilroy_regular"
                                       android:text="от 8000 / в одну сторону"
@@ -241,24 +290,20 @@
 
                 </HorizontalScrollView>
 
-                <Button android:id="@+id/map_bottom_sheet_build_route"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/ripple_rounded_primary"
-                        android:elevation="0dp"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="Составить полный маршрут"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_transport" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/map_bottom_sheet_build_route"
+                                                                   style="@style/MainTheme.Button"
+                                                                   android:layout_width="match_parent"
+                                                                   android:layout_height="50dp"
+                                                                   android:layout_marginHorizontal="16dp"
+                                                                   android:layout_marginTop="16dp"
+                                                                   android:text="Составить полный маршрут"
+                                                                   app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_transport"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <include layout="@layout/LoadingStateView"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
