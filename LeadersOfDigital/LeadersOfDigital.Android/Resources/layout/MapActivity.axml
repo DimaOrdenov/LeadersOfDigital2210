@@ -7,7 +7,7 @@
     <fragment android:id="@+id/map_map"
               android:name="com.google.android.gms.maps.SupportMapFragment"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" />
+              android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent">
@@ -15,11 +15,11 @@
         <EditText android:id="@+id/map_search_text"
                   android:layout_width="match_parent"
                   android:layout_height="40dp"
-                  android:layout_alignParentEnd="true"
                   android:layout_marginHorizontal="16dp"
                   android:layout_marginTop="44dp"
                   android:background="@drawable/rounded_background_white"
                   android:elevation="10dp"
+                  android:fontFamily="@font/gilroy_medium"
                   android:gravity="center_vertical"
                   android:hint="Поиск адреса"
                   android:inputType="text"
@@ -28,26 +28,29 @@
                   android:textColor="@color/colorText"
                   android:textColorHint="@color/colorText"
                   android:textSize="14sp"
-                  app:layout_constraintTop_toTopOf="parent" />
+                  app:layout_constraintTop_toTopOf="parent"/>
 
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/map_search_results"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="0dp"
-                                                   android:layout_marginHorizontal="16dp"
-                                                   android:layout_marginTop="8dp"
-                                                   android:background="@drawable/rounded_background_primary"
-                                                   android:visibility="gone"
-                                                   app:layout_constraintHeight_percent=".4"
-                                                   app:layout_constraintTop_toBottomOf="@id/map_search_text" />
+        <mvvmcross.droidx.recyclerview.MvxRecyclerView android:id="@+id/map_search_results"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="0dp"
+                                                       android:layout_marginHorizontal="16dp"
+                                                       android:layout_marginTop="8dp"
+                                                       android:elevation="10dp"
+                                                       android:background="@drawable/rounded_background_white"
+                                                       android:visibility="gone"
+                                                       app:layout_constraintHeight_percent=".4"
+                                                       app:layout_constraintTop_toBottomOf="@id/map_search_text"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
                                                              android:layout_height="match_parent"
                                                              android:translationZ="100dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/map_bottom_sheet"
+                                                               android:layout_width="match_parent"
                                                                android:layout_height="wrap_content"
                                                                android:background="@drawable/bottom_sheet_rounded_background_primary"
                                                                android:clickable="true"
+                                                               android:clipToPadding="false"
                                                                android:focusable="true"
                                                                android:paddingBottom="40dp"
                                                                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -57,9 +60,9 @@
                            android:layout_height="24dp"
                            android:layout_marginStart="16dp"
                            android:src="@drawable/ic_pin_underline"
-                           app:layout_constraintBottom_toBottomOf="@id/map_bottom_sheet_from_description"
+                           app:layout_constraintBottom_toBottomOf="@id/map_bottom_sheet_from_address"
                            app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_from_city" />
+                           app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_from_city"/>
 
                 <TextView android:id="@+id/map_bottom_sheet_from_city"
                           android:layout_width="wrap_content"
@@ -71,9 +74,9 @@
                           android:textColor="@color/colorText"
                           android:textSize="16sp"
                           app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_pin"
-                          app:layout_constraintTop_toTopOf="parent" />
+                          app:layout_constraintTop_toTopOf="parent"/>
 
-                <TextView android:id="@+id/map_bottom_sheet_from_description"
+                <TextView android:id="@+id/map_bottom_sheet_from_address"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:fontFamily="@font/gilroy_regular"
@@ -81,16 +84,17 @@
                           android:textColor="@color/colorText"
                           android:textSize="16sp"
                           app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_from_city"
-                          app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_from_city" />
+                          app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_from_city"/>
 
                 <ImageButton android:id="@+id/map_bottom_sheet_close"
                              android:layout_width="30dp"
                              android:layout_height="30dp"
                              android:layout_marginTop="16dp"
                              android:layout_marginEnd="16dp"
+                             android:background="?android:selectableItemBackgroundBorderless"
                              android:src="@drawable/ic_close"
                              app:layout_constraintEnd_toEndOf="parent"
-                             app:layout_constraintTop_toTopOf="parent" />
+                             app:layout_constraintTop_toTopOf="parent"/>
 
                 <View android:id="@+id/map_view_bottom_sheet_separator"
                       android:layout_width="0dp"
@@ -99,7 +103,7 @@
                       android:background="#3C3C435C"
                       app:layout_constraintEnd_toEndOf="@id/map_bottom_sheet_close"
                       app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_pin"
-                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_from_description" />
+                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_from_address"/>
 
                 <HorizontalScrollView android:id="@+id/map_bottom_sheet_transport"
                                       android:layout_width="match_parent"
@@ -129,7 +133,7 @@
                                        android:layout_height="24dp"
                                        android:src="@drawable/ic_airplane_takeoff"
                                        app:layout_constraintStart_toStartOf="parent"
-                                       app:layout_constraintTop_toTopOf="parent" />
+                                       app:layout_constraintTop_toTopOf="parent"/>
 
                             <TextView android:id="@+id/map_bottom_sheet_airplane_title"
                                       android:layout_width="wrap_content"
@@ -140,7 +144,7 @@
                                       android:textColor="@android:color/white"
                                       android:textSize="16sp"
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_airplane_icon"
-                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_airplane_icon" />
+                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_airplane_icon"/>
 
                             <TextView android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
@@ -149,7 +153,7 @@
                                       android:textColor="@android:color/white"
                                       android:textSize="14sp"
                                       app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_airplane_title"
-                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_airplane_title" />
+                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_airplane_title"/>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -169,7 +173,7 @@
                                        android:src="@drawable/ic_train"
                                        android:tint="@android:color/black"
                                        app:layout_constraintStart_toStartOf="parent"
-                                       app:layout_constraintTop_toTopOf="parent" />
+                                       app:layout_constraintTop_toTopOf="parent"/>
 
                             <TextView android:id="@+id/map_bottom_sheet_train_title"
                                       android:layout_width="wrap_content"
@@ -180,7 +184,7 @@
                                       android:textColor="@color/colorText"
                                       android:textSize="16sp"
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_train_icon"
-                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_train_icon" />
+                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_train_icon"/>
 
                             <TextView android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
@@ -189,7 +193,7 @@
                                       android:textColor="@color/colorText"
                                       android:textSize="14sp"
                                       app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_train_title"
-                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_train_title" />
+                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_train_title"/>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,7 +213,7 @@
                                        android:src="@drawable/ic_car"
                                        android:tint="@android:color/black"
                                        app:layout_constraintStart_toStartOf="parent"
-                                       app:layout_constraintTop_toTopOf="parent" />
+                                       app:layout_constraintTop_toTopOf="parent"/>
 
                             <TextView android:id="@+id/map_bottom_sheet_car_title"
                                       android:layout_width="wrap_content"
@@ -220,7 +224,7 @@
                                       android:textColor="@color/colorText"
                                       android:textSize="16sp"
                                       app:layout_constraintStart_toEndOf="@id/map_bottom_sheet_car_icon"
-                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_car_icon" />
+                                      app:layout_constraintTop_toTopOf="@id/map_bottom_sheet_car_icon"/>
 
                             <TextView android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
@@ -229,7 +233,7 @@
                                       android:textColor="@color/colorText"
                                       android:textSize="14sp"
                                       app:layout_constraintStart_toStartOf="@id/map_bottom_sheet_car_title"
-                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_car_title" />
+                                      app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_car_title"/>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -237,11 +241,13 @@
 
                 </HorizontalScrollView>
 
-                <Button android:layout_width="match_parent"
+                <Button android:id="@+id/map_bottom_sheet_build_route"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/ripple_rounded_primary"
+                        android:elevation="0dp"
                         android:fontFamily="@font/gilroy_bold"
                         android:gravity="center"
                         android:text="Составить полный маршрут"
