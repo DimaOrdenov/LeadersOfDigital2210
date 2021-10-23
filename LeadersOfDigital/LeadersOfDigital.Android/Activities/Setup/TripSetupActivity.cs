@@ -32,6 +32,10 @@ namespace LeadersOfDigital.Android.Activities.Setup
                 .For(x => x.BindClick())
                 .To(vm => vm.AddFriendCommand);
 
+            set.Bind(FindViewById<Button>(Resource.Id.nav_back_button))
+                .For(x => x.BindClick())
+                .To(vm => vm.NavigateBackCommand);
+
             (_tripEndLayout = FindViewById<LinearLayout>(Resource.Id.trip_end_layout)).Click += TripEndLayoutClick;
 
             (_tripStartLayout = FindViewById<LinearLayout>(Resource.Id.trip_start_layout)).Click += TripStartLayoutClick;

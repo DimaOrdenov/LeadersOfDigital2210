@@ -8,4 +8,5 @@
     <color name="colorAccent">#FB447C</color>
     <color name="colorSeparator">#5C3C3C43</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorSecondaryText">#7B7F9E</color>
 </resources>
