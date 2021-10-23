@@ -678,14 +678,18 @@
             app:layout_constraintTop_toBottomOf="@+id/food_types_layout"
             android:text="@string/add_friend"/>
 
-        <Button
-            android:layout_marginTop="24dp"
-            android:id="@+id/find_tickets_button"
-            style="@style/PrimaryButtonStyle"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_friend_button"
-            android:text="@string/find_tickets"/>
+        <com.google.android.material.button.MaterialButton style="@style/MainTheme.Button"
+                                                           android:layout_width="0dp"
+                                                           android:layout_height="49dp"
+                                                            android:layout_marginTop="24dp"
+                                                            android:id="@+id/find_tickets_button"
+                                                            app:layout_constraintLeft_toLeftOf="parent"
+                                                            app:layout_constraintRight_toRightOf="parent"
+                                                            app:layout_constraintTop_toBottomOf="@+id/add_friend_button"
+                                                            android:text="@string/find_tickets"
+
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
