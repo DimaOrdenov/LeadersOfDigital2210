@@ -7,4 +7,12 @@
     <string name="login_via_networks">Вход через социальные сети</string>
     <string name="app_description">Это мобильное приложение путешественника с помощью которого вы сможете составить личный крутой маршрут</string>
     <string name="continue_without_login">Продолжить без регистрации</string>
+    <string name="main">Главная</string>
+    <string name="favorites">Избранное</string>
+    <string name="popular">Популярное</string>
+    <string name="profile">Профиль</string>
+    <string name="start_planning">Начать планирование</string>
+    <string name="no_trips">Вы еще никуда не выезжали</string>
+    <string name="user_name">Иннокентий Петрович</string>
+    <string name="user_status">Безнадженый путешественник</string>
 </resources>
