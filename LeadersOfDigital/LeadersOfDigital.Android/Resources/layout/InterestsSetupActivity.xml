@@ -245,7 +245,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -271,7 +271,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -297,7 +297,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -323,7 +323,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -349,7 +349,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -375,7 +375,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -401,7 +401,7 @@
                     android:background="@drawable/ripple_rounded_white">
 
                     <CheckBox
-                        style="@style/CheckBox"
+                        style="@style/CheckBoxStyle"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
