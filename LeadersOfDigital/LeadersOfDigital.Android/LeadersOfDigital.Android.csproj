@@ -78,6 +78,7 @@
     <Compile Include="Fragments\Main\PopularFragment.cs" />
     <Compile Include="Fragments\Main\ProfileFragment.cs" />
     <Compile Include="Activities\Setup\TripSetupActivity.cs" />
+    <Compile Include="Activities\Setup\InterestsSetupActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -361,6 +362,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\ic_smile.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\InterestsSetupActivity.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

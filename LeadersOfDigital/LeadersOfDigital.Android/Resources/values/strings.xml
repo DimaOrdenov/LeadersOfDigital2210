@@ -28,4 +28,14 @@
     <string name="need_food_on_the_way">Нужно питание в пути</string>
     <string name="find_tickets">Найти билеты</string>
     <string name="add_friend">+ Добавить друга</string>
+    <string name="setup_interests">Настройте интересы</string>
+    <string name="interests">Интересы</string>
+    <string name="museums">Музеи</string>
+    <string name="parks">Парки</string>
+    <string name="exhibitions">Выставки</string>
+    <string name="monuments">Памятники</string>
+    <string name="ski">Лыжи</string>
+    <string name="mountains">Горы</string>
+    <string name="beach">Пляжный отдых</string>
+    <string name="finish_setup">Завершить настройку</string>
 </resources>

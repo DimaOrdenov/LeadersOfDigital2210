@@ -41,6 +41,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\TicketItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\TripSetupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToNullDateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\InterestsSetupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Main\" />

@@ -1,0 +1,472 @@
+﻿<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="46dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/horizontal_content_padding">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_back_button"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/gilroy_bold"
+            android:paddingHorizontal="0dp"
+            android:text="назад"
+            android:textSize="14sp"
+            app:iconTint="@color/colorSecondaryText"
+            android:textColor="@color/colorSecondaryText"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:iconGravity="textStart"
+            app:icon="@drawable/ic_arrow_left"
+            app:iconSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="47222 ₽"
+                android:layout_marginHorizontal="4dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorAccent"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="/"
+                android:layout_marginHorizontal="4dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorText"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="100000 ₽"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/interests"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nav_back_button"
+            android:fontFamily="@font/gilroy_bold"
+            android:textSize="@dimen/header_text_size"
+            android:textColor="@color/colorText"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/bottom_content_padding">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_hotels_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/rounded_background_white"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView android:id="@+id/choose_hotels_panel_to_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_airplane_takeoff"
+                    android:tint="@color/colorText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView android:id="@+id/choose_hotels_panel_to_cities"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="Москва - Сочи"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/choose_hotels_panel_to_icon"
+                    app:layout_constraintStart_toEndOf="@id/choose_hotels_panel_to_icon"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_to_icon" />
+
+                <TextView android:id="@+id/choose_hotels_panel_to_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="01.11"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/choose_hotels_panel_to_icon"
+                    app:layout_constraintTop_toBottomOf="@id/choose_hotels_panel_to_icon" />
+
+                <TextView android:id="@+id/choose_hotels_panel_to_route"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:text="VKO - AER"
+                    android:textColor="@color/colorText60"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/choose_hotels_panel_to_cities"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_to_date" />
+
+                <TextView android:id="@+id/choose_hotels_panel_to_time_range"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="20:40 - 23:00"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/choose_hotels_panel_to_route"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_to_date" />
+
+                <ImageView android:id="@+id/choose_hotels_panel_from_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_airplane_takeoff"
+                    android:tint="@color/colorText"
+                    app:layout_constraintStart_toStartOf="@id/choose_hotels_panel_to_icon"
+                    app:layout_constraintTop_toBottomOf="@id/choose_hotels_panel_to_date" />
+
+                <TextView android:id="@+id/choose_hotels_panel_from_cities"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/gilroy_bold"
+
+                    android:text="Сочи - Москва"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/choose_hotels_panel_from_icon"
+                    app:layout_constraintStart_toEndOf="@id/choose_hotels_panel_from_icon"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_from_icon" />
+
+                <TextView android:id="@+id/choose_hotels_panel_from_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="07.11"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/choose_hotels_panel_from_icon"
+                    app:layout_constraintTop_toBottomOf="@id/choose_hotels_panel_from_icon" />
+
+                <TextView android:id="@+id/choose_hotels_panel_from_route"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:text="AER - VKO"
+                    android:textColor="@color/colorText60"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/choose_hotels_panel_from_cities"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_from_date" />
+
+                <TextView android:id="@+id/choose_hotels_panel_time_range"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="20:40 - 23:00"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/choose_hotels_panel_from_route"
+                    app:layout_constraintTop_toTopOf="@id/choose_hotels_panel_from_date" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_marginHorizontal="@dimen/horizontal_content_padding"
+                android:id="@+id/setup_interests_textview"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/choose_hotels_panel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/setup_interests"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/header_text_size"
+                android:textColor="@color/colorText"/>
+
+            <LinearLayout
+                android:id="@+id/setup_interests_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/horizontal_content_padding"
+                app:layout_constraintTop_toBottomOf="@+id/setup_interests_textview">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/museums"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/parks"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/exhibitions"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/monuments"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/ski"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/mountains"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ripple_rounded_white">
+
+                    <CheckBox
+                        style="@style/CheckBox"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/beach"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/colorText"
+                        />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_tickets_next_step"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="48dp"
+                android:background="@drawable/ripple_rounded_primary"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setup_interests_layout"
+                tools:layout_editor_absoluteX="16dp">
+
+                <TextView android:id="@+id/choose_tickets_next_step_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_background_primary_dark_4"
+                    android:fontFamily="@font/gilroy_semi_bold"
+                    android:paddingHorizontal="6dp"
+                    android:text="4/4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/choose_tickets_next_step_title"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView android:id="@+id/choose_tickets_next_step_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/gilroy_semi_bold"
+                    android:text="@string/finish_setup"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/choose_tickets_next_step_counter"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

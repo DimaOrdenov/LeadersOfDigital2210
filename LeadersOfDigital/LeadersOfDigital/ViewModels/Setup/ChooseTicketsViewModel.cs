@@ -27,6 +27,8 @@ namespace LeadersOfDigital.ViewModels.Setup
         {
             _flightsService = flightsService;
 
+            NextStepCommand = new MvxAsyncCommand(item => navigationService.Navigate<InterestsSetupViewModel>());
+
             ChooseDepartureTicketCommand = new MvxCommand<TicketItemViewModel>(
                 async item =>
                 {
