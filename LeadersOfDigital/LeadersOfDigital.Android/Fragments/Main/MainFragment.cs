@@ -12,7 +12,6 @@ namespace LeadersOfDigital.Android.Fragments.Main
     [MvxFragmentPresentation]
     public class MainFragment : MvxFragment<MainViewModel>
     {
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);

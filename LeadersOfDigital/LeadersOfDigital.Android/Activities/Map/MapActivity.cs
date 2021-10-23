@@ -57,7 +57,8 @@ namespace LeadersOfDigital.Android.Activities.Map
         private ImageButton _zoomIn;
         private ImageButton _zoomOut;
         private ImageButton _myLocation;
-        private int _defaultZoom = 6;
+        private readonly int _defaultZoom = 6;
+        private readonly int _defaultPolylinesPadding = 400;
 
         public MapActivity()
         {
@@ -104,6 +105,8 @@ namespace LeadersOfDigital.Android.Activities.Map
                 .To(vm => vm.IsMyLocationEnabled);
 
             set.Apply();
+
+            this.ShowToast("Определяем ваше местоположение", ToastLength.Short);
         }
 
         public void OnClick(View v)
@@ -135,7 +138,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                             .Include(origin)
                             .Include(destination)
                             .Build(),
-                        400));
+                        _defaultPolylinesPadding));
 
                     break;
                 case Resource.Id.map_bottom_sheet_train:
@@ -156,7 +159,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                             .Include(origin)
                             .Include(destination)
                             .Build(),
-                        400));
+                        _defaultPolylinesPadding));
 
                     break;
                 case Resource.Id.map_bottom_sheet_car:

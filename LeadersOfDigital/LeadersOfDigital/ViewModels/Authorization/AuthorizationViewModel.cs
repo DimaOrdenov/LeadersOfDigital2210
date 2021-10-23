@@ -20,7 +20,7 @@ namespace LeadersOfDigital.ViewModels.Authorization
             SkipAuthCommand = new MvxAsyncCommand(() => GoToMainPageAsync());
             AuthViaSocialNetworkCommand = new MvxAsyncCommand(() => GoToMainPageAsync());
 
-            Task GoToMainPageAsync() => navigationService.Navigate<MainViewModel>();
+            Task GoToMainPageAsync() => navigationService.Navigate<MainTabbedViewModel>();
         }
     }
 }

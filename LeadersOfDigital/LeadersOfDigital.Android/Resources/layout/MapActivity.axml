@@ -10,34 +10,46 @@
               android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent">
+                                                       android:layout_height="match_parent"
+                                                       android:clipToPadding="false">
 
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="100dp"
-                      android:layout_marginEnd="16dp"
-                      android:orientation="vertical"
-                      app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintTop_toBottomOf="@id/map_search_text">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content"
+                                                           android:layout_marginTop="90dp"
+                                                           android:clipToPadding="false"
+                                                           android:orientation="vertical"
+                                                           android:padding="16dp"
+                                                           app:layout_constraintEnd_toEndOf="parent"
+                                                           app:layout_constraintTop_toBottomOf="@id/map_search_text">
 
             <ImageButton android:id="@+id/map_zoom_in"
                          style="@style/MainTheme.MapImageButton"
                          android:background="@drawable/ripple_rounded_white"
-                         android:src="@drawable/ic_plus"/>
+                         android:src="@drawable/ic_plus"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton android:id="@+id/map_zoom_out"
                          style="@style/MainTheme.MapImageButton"
                          android:layout_marginTop="24dp"
                          android:background="@drawable/ripple_rounded_white"
-                         android:src="@drawable/ic_minus"/>
+                         android:src="@drawable/ic_minus"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@id/map_zoom_in" />
 
             <ImageButton android:id="@+id/map_my_location"
                          style="@style/MainTheme.MapImageButton"
                          android:layout_marginTop="48dp"
                          android:background="@drawable/ripple_rounded_white"
-                         android:src="@drawable/ic_my_location"/>
+                         android:src="@drawable/ic_my_location"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintEnd_toEndOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@id/map_zoom_out" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText android:id="@+id/map_search_text"
                   android:layout_width="match_parent"
@@ -278,20 +290,14 @@
 
                 </HorizontalScrollView>
 
-                <Button android:id="@+id/map_bottom_sheet_build_route"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/ripple_rounded_primary"
-                        android:elevation="0dp"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="Составить полный маршрут"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_transport"/>
+                <com.google.android.material.button.MaterialButton android:id="@+id/map_bottom_sheet_build_route"
+                                                                   style="@style/MainTheme.Button"
+                                                                   android:layout_width="match_parent"
+                                                                   android:layout_height="50dp"
+                                                                   android:layout_marginHorizontal="16dp"
+                                                                   android:layout_marginTop="16dp"
+                                                                   android:text="Составить полный маршрут"
+                                                                   app:layout_constraintTop_toBottomOf="@id/map_bottom_sheet_transport"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

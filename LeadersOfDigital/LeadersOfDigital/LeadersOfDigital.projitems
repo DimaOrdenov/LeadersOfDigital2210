@@ -27,7 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CollectionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GoogleApiDirectionsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapperProfile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainTabbedViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\MapSearchResultItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Map\RouteItemViewModel.cs" />

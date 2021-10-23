@@ -63,10 +63,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                         _mapMarker.Position = ViewModel.SelectedDestination.Geometry.Location.ToLatLng();
                     }
 
-                    if (ViewModel.SelectedDestination == null)
-                    {
-                        DeactivateTransportTabs();
-                    }
+                    DeactivateTransportTabs();
 
                     break;
                 case nameof(ViewModel.DirectionsResults):
@@ -91,7 +88,7 @@ namespace LeadersOfDigital.Android.Activities.Map
                         }
                     }
 
-                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(boundsBuilder.Build(), 400));
+                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(boundsBuilder.Build(), _defaultPolylinesPadding));
 
                     break;
             }

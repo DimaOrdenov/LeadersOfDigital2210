@@ -3,9 +3,9 @@ using MvvmCross.Navigation;
 
 namespace LeadersOfDigital.ViewModels
 {
-    public class MainViewModel : PageViewModel
+    public class MainTabbedViewModel : PageViewModel
     {
-        public MainViewModel(IMvxNavigationService navigationService, ILogger<MainViewModel> logger)
+        public MainTabbedViewModel(IMvxNavigationService navigationService, ILogger<MainTabbedViewModel> logger)
             : base(navigationService, logger)
         {
         }

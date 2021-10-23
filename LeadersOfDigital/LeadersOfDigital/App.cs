@@ -30,7 +30,7 @@ namespace LeadersOfDigital
             Mvx.IoCProvider.RegisterType<PopularViewModel>();
             Mvx.IoCProvider.RegisterType<ProfileViewModel>();
 
-            RegisterAppStart<MapViewModel>();
+            RegisterAppStart<AuthorizationViewModel>();
         }
     }
 }
