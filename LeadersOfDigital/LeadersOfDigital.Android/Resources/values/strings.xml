@@ -19,6 +19,7 @@
     <string name="route">Маршрут</string>
     <string name="setup_trip">Настройте путешествие</string>
     <string name="stops">Остановки</string>
+    <string name="living_types">Тип жилья</string>
     <string name="driving_time">Время за рулем</string>
     <string name="food_types">Выберите тип питания</string>
     <string name="one_way_route">Едем в одну сторону</string>
