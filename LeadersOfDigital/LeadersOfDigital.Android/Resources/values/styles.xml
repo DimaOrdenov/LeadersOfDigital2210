@@ -35,6 +35,7 @@
     </style>
 
     <style name="SwitchStyle">
+        <item name="android:thumbTint">@android:color/white</item>
         <item name="android:colorControlActivated">@android:color/white</item>
         <item name="android:colorForeground">@color/colorSeparator</item>
         <item name="android:trackTint">@color/colorPrimary</item>
