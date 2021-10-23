@@ -26,7 +26,7 @@ namespace LeadersOfDigital.ViewModels.Map
 
         public PlaceType PlaceType { get; }
 
-        public string DistanceStr => $"{Distance} км";
+        public string DistanceStr => $"{Distance:F1} км";
 
         public string PlaceImage { get; }
     }

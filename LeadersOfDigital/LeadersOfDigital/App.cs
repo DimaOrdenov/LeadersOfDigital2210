@@ -7,6 +7,8 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using RestSharp;
 using LeadersOfDigital.Android.Helpers;
+using LeadersOfDigital.ViewModels;
+using MainViewModel = LeadersOfDigital.ViewModels.Main.MainViewModel;
 
 namespace LeadersOfDigital
 {

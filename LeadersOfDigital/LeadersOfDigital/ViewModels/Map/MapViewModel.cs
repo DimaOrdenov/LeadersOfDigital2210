@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -193,7 +194,7 @@ namespace LeadersOfDigital.ViewModels
                         .Where(x => x != null)
                         .Select(x => new MapSearchResultItemViewModel(x)
                         {
-                            Distance = 1000,
+                            Distance = CalculateDistanceBetweenPositions(MyPosition, x.Geometry.Location),
                         }));
 
                 await RaisePropertyChanged(nameof(SearchResults));
@@ -205,6 +206,17 @@ namespace LeadersOfDigital.ViewModels
         {
             SearchResults.Clear();
             await RaisePropertyChanged(nameof(SearchResults));
+        }
+
+        private double CalculateDistanceBetweenPositions(Position from, Position to)
+        {
+            var d1 = from.Lat * (Math.PI / 180.0);
+            var num1 = from.Lng * (Math.PI / 180.0);
+            var d2 = to.Lat * (Math.PI / 180.0);
+            var num2 = to.Lng * (Math.PI / 180.0) - num1;
+            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) + Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
+
+            return 6376.5 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
         }
     }
 }
