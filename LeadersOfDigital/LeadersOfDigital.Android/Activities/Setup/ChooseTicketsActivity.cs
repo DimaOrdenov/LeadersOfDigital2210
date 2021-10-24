@@ -111,7 +111,7 @@ namespace LeadersOfDigital.Android.Activities.Setup
 
             if (ViewModel != null)
             {
-                ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+                ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
             }
         }
 
