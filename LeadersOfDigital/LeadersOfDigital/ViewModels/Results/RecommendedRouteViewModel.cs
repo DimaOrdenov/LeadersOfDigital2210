@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -11,6 +12,7 @@ namespace LeadersOfDigital.ViewModels.Results
         public RecommendedRouteViewModel(IMvxNavigationService navigationService, ILogger<RecommendedRouteViewModel> logger)
             : base(navigationService, logger)
         {
+            NextStepCommand = new MvxAsyncCommand(() => Task.FromResult(true));
         }
     }
 }

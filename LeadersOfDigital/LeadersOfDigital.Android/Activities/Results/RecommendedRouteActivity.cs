@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Widget;
 using LeadersOfDigital.ViewModels.Results;
 using MvvmCross.Platforms.Android.Binding;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
@@ -19,9 +20,13 @@ namespace LeadersOfDigital.Android.Activities.Results
 
             var set = CreateBindingSet();
 
-            set.Bind(FindViewById(Resource.Id.next_step_layout))
+            set.Bind(FindViewById(Resource.Id.next_button))
                 .For(x => x.BindClick())
                 .To(vm => vm.NextStepCommand);
+
+            set.Bind(FindViewById(Resource.Id.nav_back_button))
+                .For(x => x.BindClick())
+                .To(vm => vm.NavigateBackCommand);
 
             set.Apply();
         }
