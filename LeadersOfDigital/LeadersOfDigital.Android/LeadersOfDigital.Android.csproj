@@ -84,6 +84,7 @@
     <Compile Include="Activities\Setup\TripSetupActivity.cs" />
     <Compile Include="Activities\Setup\InterestsSetupActivity.cs" />
     <Compile Include="Activities\Results\RecommendedRouteActivity.cs" />
+    <Compile Include="Services\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -516,6 +517,7 @@
       <Name>LeadersOfDigital.DataModels</Name>
     </ProjectReference>
     <Folder Include="Activities\Results\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="secrets.json">

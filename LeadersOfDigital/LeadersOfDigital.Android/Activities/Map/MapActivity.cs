@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Android.App;
 using Android.Content;
@@ -237,10 +238,12 @@ namespace LeadersOfDigital.Android.Activities.Map
                     break;
                 case Resource.Id.map_bottom_sheet_open_maps:
                     Intent mapIntent = new Intent(Intent.ActionView, Uri.Parse(ViewModel.MyPosition != null ?
-                        $"https://www.google.com/maps/dir/{ViewModel.MyPosition.Lat},{ViewModel.MyPosition.Lng}/{destination.Latitude},{destination.Longitude}/" :
-                        $"geo:{destination.Latitude},{destination.Longitude}"));
+                        $"https://www.google.com/maps/dir/{DoubleToInvariantString(ViewModel.MyPosition.Lat)},{DoubleToInvariantString(ViewModel.MyPosition.Lng)}/{DoubleToInvariantString(destination.Latitude)},{DoubleToInvariantString(destination.Longitude)}/" :
+                        $"geo:{DoubleToInvariantString(destination.Latitude)},{DoubleToInvariantString(destination.Longitude)}"));
                     // mapIntent.setPackage("com.google.android.apps.maps");
                     StartActivity(mapIntent);
+
+                    static string DoubleToInvariantString(double @double) => @double.ToString("G", CultureInfo.InvariantCulture);
 
                     break;
             }

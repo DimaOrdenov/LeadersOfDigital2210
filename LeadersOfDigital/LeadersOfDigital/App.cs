@@ -9,6 +9,8 @@ using MvvmCross.ViewModels;
 using RestSharp;
 using LeadersOfDigital.Android.Helpers;
 using LeadersOfDigital.Definitions;
+using LeadersOfDigital.Android.Services;
+using LeadersOfDigital.Services;
 
 namespace LeadersOfDigital
 {
@@ -35,6 +37,7 @@ namespace LeadersOfDigital
 
             Mvx.IoCProvider.RegisterSingleton(new AppStorage());
 
+            Mvx.IoCProvider.RegisterType<IDialogService, DialogService>();
             Mvx.IoCProvider.RegisterType<MainViewModel>();
             Mvx.IoCProvider.RegisterType<FavoritesViewModel>();
             Mvx.IoCProvider.RegisterType<PopularViewModel>();

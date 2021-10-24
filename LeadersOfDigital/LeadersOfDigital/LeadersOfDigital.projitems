@@ -47,10 +47,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToNullDateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\InterestsSetupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Results\RecommendedRouteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDialogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Main\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Setup\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Results\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
 </Project>

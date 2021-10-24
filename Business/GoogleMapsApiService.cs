@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,12 +29,12 @@ namespace Business
             IRestRequest request = new RestRequest("api/directions/json", Method.GET);
 
             request.AddParameter("mode", data.TravelMode);
-            request.AddParameter("origin", $"{data.Origin.Invoke().Lat},{data.Origin.Invoke().Lng}");
-            request.AddParameter("destination", $"{data.Destination.Invoke().Lat},{data.Destination.Invoke().Lng}");
+            request.AddParameter("origin", $"{DoubleToInvariantString(data.Origin.Invoke().Lat)},{DoubleToInvariantString(data.Origin.Invoke().Lng)}");
+            request.AddParameter("destination", $"{DoubleToInvariantString(data.Destination.Invoke().Lat)},{DoubleToInvariantString(data.Destination.Invoke().Lng)}");
 
             if (data.Waypoints?.FirstOrDefault() is { } waypoint)
             {
-                request.AddParameter("waypoints", $"{waypoint.Lat},{waypoint.Lng}");
+                request.AddParameter("waypoints", $"{DoubleToInvariantString(waypoint.Lat)},{DoubleToInvariantString(waypoint.Lng)}");
             }
 
             request.AddParameter("alternatives", data.IsProvideAlternatives.ToString());
@@ -57,11 +58,13 @@ namespace Business
         {
             IRestRequest request = new RestRequest("api/geocode/json", Method.GET);
 
-            request.AddParameter("latlng", $"{position.Lat},{position.Lng}");
+            request.AddParameter("latlng", $"{DoubleToInvariantString(position.Lat)},{DoubleToInvariantString(position.Lng)}");
             request.AddParameter("language", "ru");
             request.AddParameter("key", _googleApisKey);
 
             return ExecuteAsync<GoogleGeocodeResponse>(request, token);
         }
+
+        private static string DoubleToInvariantString(double @double) => @double.ToString("G", CultureInfo.InvariantCulture);
     }
 }
