@@ -51,15 +51,15 @@ namespace LeadersApi.Services.Hotels
 
         public async Task<Hotel> GetSuggestedHotel(int maxBudget, int currentBudget, Cities city, DateTime from, DateTime to)
         {
-            var hotels = await GetHotels(city, from, to);
-
+            var allHotels = await GetHotels(city, from, to);
+            var rand = new Random();
 
             // TODO: подбор по локации (по интересам пользователя)
-            var hotel = hotels.Where(x=>
-            (x.priceAvg + currentBudget) < maxBudget) //входим в бюджет
-                .FirstOrDefault();
+            var hotels = allHotels.Where(x =>
+            (x.priceAvg + currentBudget) < maxBudget * 0.7) //входим в бюджет до 70%, по статистике так и выходит 60-70%
+                .ToList();
 
-            return hotel;
+            return hotels.ElementAt(rand.Next(hotels.Count));
         }
     }
 }

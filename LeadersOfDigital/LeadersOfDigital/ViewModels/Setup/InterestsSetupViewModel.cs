@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
+using LeadersOfDigital.ViewModels.Results;
 using LeadersOfDigital.DataModels.Responses.Hotels;
 using LeadersOfDigital.Definitions;
 using Microsoft.Extensions.Logging;

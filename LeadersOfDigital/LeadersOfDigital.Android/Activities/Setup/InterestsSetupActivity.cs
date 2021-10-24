@@ -44,6 +44,10 @@ namespace LeadersOfDigital.Android.Activities.Setup
 
             var set = CreateBindingSet();
 
+            set.Bind(FindViewById(Resource.Id.next_step_layout))
+                .For(x => x.BindClick())
+                .To(vm => vm.NextStepCommand);
+            
             set.Bind(_back)
                 .For(x => x.BindClick())
                 .To(vm => vm.NavigateBackCommand);
