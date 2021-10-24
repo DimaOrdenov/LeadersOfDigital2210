@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using AndroidX.ViewPager2.Widget;
 using Google.Android.Material.BottomNavigation;
@@ -10,7 +11,7 @@ using MvvmCross.Platforms.Android.Views;
 namespace LeadersOfDigital.Android.Activities
 {
     [MvxActivityPresentation]
-    [Activity]
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainTabbedActivity : MvxActivity<MainTabbedViewModel>
     {
         private ViewPager2 _viewPager;

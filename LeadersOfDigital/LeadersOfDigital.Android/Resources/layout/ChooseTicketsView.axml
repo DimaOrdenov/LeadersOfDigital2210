@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@color/background"
+                                                   android:clipToPadding="false"
+                                                   android:paddingTop="48dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_tickets_budget"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_marginHorizontal="16dp"
+                                                       app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/choose_tickets_back"
+                                                           style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                                           android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content"
+                                                           android:backgroundTint="@android:color/transparent"
+                                                           android:fontFamily="@font/gilroy_bold"
+                                                           android:paddingHorizontal="0dp"
+                                                           android:text="назад"
+                                                           android:textColor="@color/colorSecondaryText"
+                                                           android:textSize="14sp"
+                                                           app:backgroundTint="@android:color/transparent"
+                                                           app:icon="@drawable/ic_arrow_left"
+                                                           app:iconGravity="textStart"
+                                                           app:iconSize="16dp"
+                                                           app:iconTint="@color/colorSecondaryText"
+                                                           app:layout_constraintStart_toStartOf="parent"
+                                                           app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView android:id="@+id/choose_tickets_budget_current"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="8dp"
+                  android:fontFamily="@font/gilroy_semi_bold"
+                  android:text="3398 ₽"
+                  android:textColor="@color/colorAccent"
+                  android:textSize="14sp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toStartOf="@id/choose_tickets_budget_separator"
+                  app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView android:id="@+id/choose_tickets_budget_separator"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="8dp"
+                  android:fontFamily="@font/gilroy_semi_bold"
+                  android:text="/"
+                  android:textColor="@color/colorText"
+                  android:textSize="14sp"
+                  app:layout_constraintBottom_toBottomOf="@id/choose_tickets_budget_current"
+                  app:layout_constraintEnd_toStartOf="@id/choose_tickets_budget_max"
+                  app:layout_constraintTop_toTopOf="@id/choose_tickets_budget_current"/>
+
+        <TextView android:id="@+id/choose_tickets_budget_max"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/gilroy_semi_bold"
+                  android:text="100000 ₽"
+                  android:textColor="@color/colorPrimary"
+                  android:textSize="14sp"
+                  app:layout_constraintBottom_toBottomOf="@id/choose_tickets_budget_current"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="@id/choose_tickets_budget_current"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView android:id="@+id/choose_tickets_header"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/gilroy_bold"
+              android:text="Выбор билета"
+              android:textColor="@color/colorText"
+              android:textSize="28dp"
+              app:layout_constraintStart_toStartOf="@id/choose_tickets_budget"
+              app:layout_constraintTop_toBottomOf="@id/choose_tickets_budget"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_tickets_route_panel"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_marginHorizontal="16dp"
+                                                       android:layout_marginTop="16dp"
+                                                       android:background="@drawable/rounded_background_white"
+                                                       android:paddingHorizontal="16dp"
+                                                       android:paddingVertical="8dp"
+                                                       app:layout_constraintTop_toBottomOf="@id/choose_tickets_header">
+
+        <ImageView android:id="@+id/choose_tickets_route_panel_icon"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:src="@drawable/ic_airplane_takeoff"
+                   android:tint="@color/colorText"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView android:id="@+id/choose_tickets_route_panel_cities"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="16dp"
+                  android:fontFamily="@font/gilroy_bold"
+                  android:text="Москва - Сочи"
+                  android:textColor="@color/colorText"
+                  android:textSize="14sp"
+                  app:layout_constraintBottom_toBottomOf="@id/choose_tickets_route_panel_icon"
+                  app:layout_constraintEnd_toStartOf="@id/choose_tickets_route_panel_dates"
+                  app:layout_constraintStart_toEndOf="@id/choose_tickets_route_panel_icon"
+                  app:layout_constraintTop_toTopOf="@id/choose_tickets_route_panel_icon"/>
+
+        <TextView android:id="@+id/choose_tickets_route_panel_dates"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/gilroy_bold"
+                  android:text="01.11 - 07.11"
+                  android:textColor="@color/colorAccent"
+                  android:textSize="14sp"
+                  app:layout_constraintBottom_toBottomOf="@id/choose_tickets_route_panel_icon"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="@id/choose_tickets_route_panel_icon"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_tickets_dates"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_marginTop="24dp"
+                                                       android:paddingHorizontal="16dp"
+                                                       app:layout_constraintTop_toBottomOf="@id/choose_tickets_route_panel">
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/choose_tickets_dates_from"
+                                                           style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                                           android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content"
+                                                           android:backgroundTint="@android:color/transparent"
+                                                           android:clickable="false"
+                                                           android:focusable="false"
+                                                           android:fontFamily="@font/gilroy_bold"
+                                                           android:padding="0dp"
+                                                           android:text="01.11.2021"
+                                                           android:textColor="@color/colorText"
+                                                           android:textSize="24sp"
+                                                           app:backgroundTint="@android:color/transparent"
+                                                           app:iconGravity="textEnd"
+                                                           app:iconTint="@color/colorAccentGreen"
+                                                           app:layout_constraintBottom_toBottomOf="parent"
+                                                           app:layout_constraintStart_toStartOf="parent"
+                                                           app:layout_constraintTop_toTopOf="parent"/>
+
+        <View android:id="@+id/choose_tickets_dates_separator"
+              android:layout_width="16dp"
+              android:layout_height="1dp"
+              android:layout_marginStart="16dp"
+              android:background="@color/colorSeparator"
+              app:layout_constraintBottom_toBottomOf="@id/choose_tickets_dates_from"
+              app:layout_constraintStart_toEndOf="@id/choose_tickets_dates_from"
+              app:layout_constraintTop_toTopOf="@id/choose_tickets_dates_from"/>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/choose_tickets_dates_to"
+                                                           style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                                           android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content"
+                                                           android:layout_marginStart="16dp"
+                                                           android:clickable="false"
+                                                           android:focusable="false"
+                                                           android:fontFamily="@font/gilroy_bold"
+                                                           android:padding="0dp"
+                                                           android:text="07.11.2021"
+                                                           android:textColor="@color/colorText"
+                                                           android:textSize="18sp"
+                                                           app:backgroundTint="@android:color/transparent"
+                                                           app:iconGravity="textEnd"
+                                                           app:iconTint="@color/colorAccentGreen"
+                                                           app:layout_constraintBottom_toBottomOf="@id/choose_tickets_dates_from"
+                                                           app:layout_constraintStart_toEndOf="@id/choose_tickets_dates_separator"
+                                                           app:layout_constraintTop_toTopOf="@id/choose_tickets_dates_from"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView android:id="@+id/choose_tickets_tickets_list"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="0dp"
+                                                   android:paddingTop="12dp"
+                                                   android:paddingBottom="100dp"
+                                                   android:clipToPadding="false"
+                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                   app:layout_constraintTop_toBottomOf="@id/choose_tickets_dates">
+
+    </mvvmcross.droidx.recyclerview.MvxRecyclerView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/choose_tickets_next_step"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="50dp"
+                                                       android:layout_marginHorizontal="16dp"
+                                                       android:layout_marginBottom="40dp"
+                                                       android:background="@drawable/ripple_rounded_primary"
+                                                       android:clickable="true"
+                                                       android:focusable="true"
+                                                       app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView android:id="@+id/choose_tickets_next_step_counter"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/rounded_background_primary_dark_4"
+                  android:fontFamily="@font/gilroy_semi_bold"
+                  android:paddingHorizontal="6dp"
+                  android:text="2/4"
+                  android:textColor="@color/colorWhite"
+                  android:textSize="16sp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toStartOf="@id/choose_tickets_next_step_title"
+                  app:layout_constraintHorizontal_chainStyle="packed"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView android:id="@+id/choose_tickets_next_step_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:fontFamily="@font/gilroy_semi_bold"
+                  android:text="Найти гостиницу"
+                  android:textColor="@color/colorWhite"
+                  android:textSize="16sp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toEndOf="@id/choose_tickets_next_step_counter"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/LoadingStateView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

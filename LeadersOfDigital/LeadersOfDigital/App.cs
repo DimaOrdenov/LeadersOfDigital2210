@@ -1,3 +1,4 @@
+using System.Reflection;
 using Business;
 using LeadersOfDigital.ViewModels.Authorization;
 using LeadersOfDigital.ViewModels.Main;
@@ -7,8 +8,6 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using RestSharp;
 using LeadersOfDigital.Android.Helpers;
-using LeadersOfDigital.ViewModels;
-using MainViewModel = LeadersOfDigital.ViewModels.Main.MainViewModel;
 
 namespace LeadersOfDigital
 {
@@ -17,6 +16,14 @@ namespace LeadersOfDigital
         public override void Initialize()
         {
             base.Initialize();
+
+            CreatableTypes(Assembly.GetAssembly(typeof(IFlightsService)))
+                .EndingWith("Service")
+                .AsInterfaces()
+                .RegisterAsLazySingleton();
+
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRestClient>(() =>
+                new RestClient("https://leadersapi.azurewebsites.net/"));
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IGoogleMapsApiService>(
                 () => new GoogleMapsApiService(

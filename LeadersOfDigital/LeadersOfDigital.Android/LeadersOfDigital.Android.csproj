@@ -56,7 +56,10 @@
     <Compile Include="Activities\Map\MapActivity.cs" />
     <Compile Include="Activities\Map\MapActivity.Intercations.cs" />
     <Compile Include="Activities\Map\MapActivity.MapListeners.cs" />
+    <Compile Include="Activities\Setup\ChooseHotelsActivity.cs" />
+    <Compile Include="Activities\Setup\ChooseTicketsActivity.cs" />
     <Compile Include="Adapters\MapSearchResultsAdapter.cs" />
+    <Compile Include="Adapters\TicketsAdapter.cs" />
     <Compile Include="Bindings\ImageViewBinding.cs" />
     <Compile Include="Helpers\ActivityExtensions.cs" />
     <Compile Include="Helpers\BitmapDescriptorExtensions.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Fragments\Main\PopularFragment.cs" />
     <Compile Include="Fragments\Main\ProfileFragment.cs" />
     <Compile Include="Activities\Setup\TripSetupActivity.cs" />
+    <Compile Include="Activities\Setup\InterestsSetupActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -84,30 +88,46 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\airplane_over_blue_sky.png" />
+    <AndroidResource Include="Resources\drawable\bandara_villas_phuket.jpeg" />
     <AndroidResource Include="Resources\drawable\bottom_sheet_rounded_background_primary.xml" />
     <AndroidResource Include="Resources\drawable\ic_airplane_in_flight.xml" />
     <AndroidResource Include="Resources\drawable\ic_airplane_takeoff.xml" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_left.xml" />
     <AndroidResource Include="Resources\drawable\ic_arrow_up_right.xml" />
     <AndroidResource Include="Resources\drawable\ic_baseline_arrow_right_alt_24.xml" />
     <AndroidResource Include="Resources\drawable\ic_car.xml" />
+    <AndroidResource Include="Resources\drawable\ic_check_circle.xml" />
     <AndroidResource Include="Resources\drawable\ic_clear.xml" />
     <AndroidResource Include="Resources\drawable\ic_close.xml" />
+    <AndroidResource Include="Resources\drawable\ic_emoji_high_voltage.png" />
+    <AndroidResource Include="Resources\drawable\ic_emoji_thumbs_up.png" />
+    <AndroidResource Include="Resources\drawable\ic_house.xml" />
+    <AndroidResource Include="Resources\drawable\ic_info.xml" />
     <AndroidResource Include="Resources\drawable\ic_minus.xml" />
     <AndroidResource Include="Resources\drawable\ic_my_location.xml" />
     <AndroidResource Include="Resources\drawable\ic_odnoklassniki.xml" />
     <AndroidResource Include="Resources\drawable\ic_pin_underline.xml" />
     <AndroidResource Include="Resources\drawable\ic_plus.xml" />
     <AndroidResource Include="Resources\drawable\ic_sbarbank.xml" />
+    <AndroidResource Include="Resources\drawable\ic_star.xml" />
+    <AndroidResource Include="Resources\drawable\ic_star_filled.xml" />
     <AndroidResource Include="Resources\drawable\ic_telegram.xml" />
     <AndroidResource Include="Resources\drawable\ic_train.xml" />
     <AndroidResource Include="Resources\drawable\ic_vk.xml" />
     <AndroidResource Include="Resources\drawable\ic_yandex.xml" />
+    <AndroidResource Include="Resources\drawable\logo_aviasales.png" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_accent.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_background.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_primary.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_primary_dark.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_rounded_primary_dark_4.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_white.xml" />
     <AndroidResource Include="Resources\drawable\ripple_rounded_white_4.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_accent.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_background.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_primary.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_primary_dark.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_primary_dark_4.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_white.xml" />
     <AndroidResource Include="Resources\font\gilroy_black.ttf" />
     <AndroidResource Include="Resources\font\gilroy_black_italic.ttf" />
@@ -129,11 +149,30 @@
     <AndroidResource Include="Resources\font\gilroy_thin_italic.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light_italic.ttf" />
+    <AndroidResource Include="Resources\layout\ChooseHotelsView.axml" />
+    <AndroidResource Include="Resources\layout\ChooseTicketsListItem.axml" />
+    <AndroidResource Include="Resources\layout\ChooseTicketsView.axml" />
     <AndroidResource Include="Resources\layout\LoadingStateView.axml" />
     <AndroidResource Include="Resources\layout\MainTabbedActivity.axml" />
     <AndroidResource Include="Resources\layout\MapActivity.axml" />
     <AndroidResource Include="Resources\layout\MapSearchResultItemView.axml" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_adaptive_back.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_adaptive_fore.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher_adaptive_back.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher_adaptive_fore.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher_adaptive_back.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher_adaptive_fore.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher_adaptive_back.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher_adaptive_fore.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_adaptive_back.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_adaptive_fore.png" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
@@ -334,6 +373,26 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_crown.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_globus.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_heart.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_smile.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\InterestsSetupActivity.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -436,6 +495,10 @@
       <Name>Business</Name>
     </ProjectReference>
     <Folder Include="Activities\Setup\" />
+    <ProjectReference Include="..\..\LeadersOfDigital.DataModels\LeadersOfDigital.DataModels.csproj">
+      <Project>{9d864e21-422e-40d9-b9e7-e2b5b928692d}</Project>
+      <Name>LeadersOfDigital.DataModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Update="secrets.json">

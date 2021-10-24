@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using LeadersOfDigital.Converters;
@@ -11,7 +12,7 @@ using MvvmCross.Platforms.Android.Views;
 namespace LeadersOfDigital.Android.Activities.Setup
 {
     [MvxActivityPresentation]
-    [Activity]
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
     public class TripSetupActivity : MvxActivity<TripSetupViewModel>
     {
         private LinearLayout _tripEndLayout;
@@ -24,7 +25,7 @@ namespace LeadersOfDigital.Android.Activities.Setup
 
             var set = CreateBindingSet();
 
-            set.Bind(FindViewById<Button>(Resource.Id.find_tickets_button))
+            set.Bind(FindViewById(Resource.Id.choose_tickets_next_step))
                 .For(x => x.BindClick())
                 .To(vm => vm.FindTicketsCommand);
 

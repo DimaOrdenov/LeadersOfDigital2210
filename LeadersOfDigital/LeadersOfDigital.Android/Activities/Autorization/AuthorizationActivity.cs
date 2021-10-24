@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using LeadersOfDigital.ViewModels.Authorization;
@@ -9,7 +10,7 @@ using MvvmCross.Platforms.Android.Views;
 namespace LeadersOfDigital.Android.Activities
 {
     [MvxActivityPresentation]
-    [Activity(Label = "AuthorizationActivity")]
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
     public class AuthorizationActivity : MvxActivity<AuthorizationViewModel>
     {
         protected override void OnCreate(Bundle bundle)
