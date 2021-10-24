@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
@@ -6,7 +7,6 @@ using Android.Content.PM;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Locations;
-using Android.Net;
 using Android.OS;
 using Android.Views;
 using Android.Views.InputMethods;
@@ -16,7 +16,6 @@ using Business.Definitions.Models;
 using Business.Definitions.Requests;
 using Definitions.Interactions;
 using Google.Android.Material.BottomSheet;
-using Java.Lang;
 using LeadersOfDigital.Android.Adapters;
 using LeadersOfDigital.Android.Definitions.Types;
 using LeadersOfDigital.Android.Helpers;
@@ -31,7 +30,9 @@ using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.Platforms.Android.Views;
+using Exception = Java.Lang.Exception;
 using Location = Xamarin.Essentials.Location;
+using Uri = Android.Net.Uri;
 
 namespace LeadersOfDigital.Android.Activities.Map
 {
@@ -42,8 +43,8 @@ namespace LeadersOfDigital.Android.Activities.Map
     {
         private readonly LocationListener _locationListener;
         private readonly IList<Polyline> _mapPolylines;
-        private readonly int _defaultZoom = 6;
-        private readonly int _defaultPolylinesPadding = 400;
+        private readonly int _defaultZoom = 8;
+        private readonly int _defaultPolylinesPadding = 200;
 
         private LocationManager _locationManager;
 
@@ -138,12 +139,19 @@ namespace LeadersOfDigital.Android.Activities.Map
                         destination,
                     });
 
-                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(
-                        new LatLngBounds.Builder()
-                            .Include(origin)
-                            .Include(destination)
-                            .Build(),
-                        _defaultPolylinesPadding));
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(
+                            new LatLngBounds.Builder()
+                                .Include(origin)
+                                .Include(destination)
+                                .Build(),
+                            _defaultPolylinesPadding));
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
 
                     break;
                 case Resource.Id.map_bottom_sheet_train:
@@ -159,12 +167,19 @@ namespace LeadersOfDigital.Android.Activities.Map
                         destination,
                     });
 
-                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(
-                        new LatLngBounds.Builder()
-                            .Include(origin)
-                            .Include(destination)
-                            .Build(),
-                        _defaultPolylinesPadding));
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(
+                            new LatLngBounds.Builder()
+                                .Include(origin)
+                                .Include(destination)
+                                .Build(),
+                            _defaultPolylinesPadding));
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
 
                     break;
                 case Resource.Id.map_bottom_sheet_car:
@@ -181,12 +196,26 @@ namespace LeadersOfDigital.Android.Activities.Map
 
                     break;
                 case Resource.Id.map_zoom_in:
-                    _googleMap.AnimateCamera(CameraUpdateFactory.ZoomIn());
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.ZoomIn());
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
 
                     break;
                 case Resource.Id.map_zoom_out:
-                    _googleMap.AnimateCamera(CameraUpdateFactory.ZoomOut());
-                    
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.ZoomOut());
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
+
                     break;
                 case Resource.Id.map_my_location:
                     if (ViewModel.MyPosition == null)
@@ -196,7 +225,14 @@ namespace LeadersOfDigital.Android.Activities.Map
                         return;
                     }
 
-                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(ViewModel.MyPosition.ToLatLng(), _defaultZoom));
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(ViewModel.MyPosition.ToLatLng(), _defaultZoom));
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
 
                     break;
                 case Resource.Id.map_bottom_sheet_open_maps:
@@ -301,7 +337,14 @@ namespace LeadersOfDigital.Android.Activities.Map
 
                     if (item.Place?.Geometry?.Location is { } location)
                     {
-                        _googleMap?.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(location.ToLatLng(), _defaultZoom));
+                        try
+                        {
+                            _googleMap?.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(location.ToLatLng(), _defaultZoom));
+                        }
+                        catch (Exception ex)
+                        {
+                            ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                        }
                     }
                 });
 

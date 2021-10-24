@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Linq;
 using Android.Gms.Maps;
@@ -7,6 +8,7 @@ using Android.Widget;
 using Google.Android.Material.BottomSheet;
 using LeadersOfDigital.Android.Adapters;
 using LeadersOfDigital.Android.Helpers;
+using Microsoft.Extensions.Logging;
 using MvvmCross.Platforms.Android.Binding;
 
 namespace LeadersOfDigital.Android.Activities.Map
@@ -42,7 +44,6 @@ namespace LeadersOfDigital.Android.Activities.Map
                 .For(x => x.HumanReadableExceptionInteraction)
                 .To(vm => vm.HumanReadableExceptionInteraction)
                 .OneWay();
-            
 
             set.Bind(_buildRoute)
                 .For(x => x.BindClick())
@@ -99,7 +100,14 @@ namespace LeadersOfDigital.Android.Activities.Map
                         }
                     }
 
-                    _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(boundsBuilder.Build(), _defaultPolylinesPadding));
+                    try
+                    {
+                        _googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(boundsBuilder.Build(), _defaultPolylinesPadding));
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewModel.Logger.LogError(ex, "Couldn't animate camera");
+                    }
 
                     break;
             }

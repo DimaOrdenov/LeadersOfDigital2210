@@ -77,6 +77,8 @@ namespace LeadersOfDigital.ViewModels.Setup
                         await NavigationService.Close(this, new ViewModelResult(true));
                     }
                 });
+            
+            NavigateBackCommand = new MvxCommand(() => navigationService.Close(this, new ViewModelResult()));
 
             TicketsResults = new MvxObservableCollection<TicketItemViewModel>();
         }

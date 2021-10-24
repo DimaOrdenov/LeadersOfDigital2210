@@ -35,6 +35,8 @@ namespace LeadersOfDigital.ViewModels.Setup
                 });
 
             AddFriendCommand = new MvxAsyncCommand(() => Task.FromResult(true));
+            
+            NavigateBackCommand = new MvxCommand(() => navigationService.Close(this, new ViewModelResult()));
         }
 
         public override IMvxCommand NavigateBackCommand { get; }
