@@ -127,6 +127,8 @@ namespace LeadersOfDigital.ViewModels
                         .SetIsWithInteraction(true)
                         .SetCommonErrorMessage("Не удалось получить маршруты"));
                 });
+            
+            NavigateBackCommand = new MvxCommand(() => navigationService.Close(this, new ViewModelResult()));
 
             _debounceDispatcher = new DebounceDispatcher(500);
             SearchResults = new MvxObservableCollection<MapSearchResultItemViewModel>();
