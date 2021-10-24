@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+                                                   android:layout_height="match_parent"
+                                                   android:background="@color/colorWhite">
 
     <ImageView android:id="@+id/header_image"
                android:layout_width="wrap_content"
@@ -12,7 +13,7 @@
                android:src="@drawable/airplane_over_blue_sky"
                app:layout_constraintLeft_toLeftOf="parent"
                app:layout_constraintRight_toRightOf="parent"
-               app:layout_constraintTop_toTopOf="parent"/>
+               app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/content_layout"
                                                        android:layout_width="match_parent"
@@ -30,21 +31,21 @@
                   android:layout_height="wrap_content"
                   android:fontFamily="@font/gilroy_light"
                   android:text="@string/welcome"
+
                   android:textColor="@color/colorText"
                   android:textSize="@dimen/medium_text_size"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"/>
+                  app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView android:id="@+id/app_name_textview"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="4dp"
-                  android:fontFamily="@font/gilroy_bold"
-                  android:text="@string/app_name"
-                  android:textColor="@color/colorText"
-                  android:textSize="@dimen/large_text_size"
-                  app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toBottomOf="@+id/welcome_textview"/>
+        <ImageView android:id="@+id/auth_app_logo"
+                   android:layout_width="0dp"
+                   android:layout_height="40dp"
+                   android:layout_marginTop="16dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="fitCenter"
+                   android:src="@drawable/ic_logo"
+                   app:layout_constraintStart_toStartOf="@id/welcome_textview"
+                   app:layout_constraintTop_toBottomOf="@id/welcome_textview" />
 
         <TextView android:id="@+id/app_description_textview"
                   android:layout_width="0dp"
@@ -55,8 +56,8 @@
                   android:textColor="@color/colorText"
                   android:textSize="@dimen/small_text_size"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toBottomOf="@+id/app_name_textview"
-                  app:layout_constraintWidth_percent="0.75"/>
+                  app:layout_constraintTop_toBottomOf="@+id/auth_app_logo"
+                  app:layout_constraintWidth_percent="0.75" />
 
         <com.google.android.material.button.MaterialButton android:id="@+id/authorize_button"
                                                            style="@style/MainTheme.Button"
@@ -68,7 +69,7 @@
                                                            app:iconGravity="textEnd"
                                                            app:layout_constraintBottom_toTopOf="@+id/social_networks_textview"
                                                            app:layout_constraintLeft_toLeftOf="parent"
-                                                           app:layout_constraintRight_toRightOf="parent"/>
+                                                           app:layout_constraintRight_toRightOf="parent" />
 
         <TextView android:id="@+id/social_networks_textview"
                   android:layout_width="wrap_content"
@@ -80,7 +81,7 @@
                   android:textSize="@dimen/small_text_size"
                   app:layout_constraintBottom_toTopOf="@+id/social_networks_gridlayout"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="parent"/>
+                  app:layout_constraintRight_toRightOf="parent" />
 
         <GridLayout android:id="@+id/social_networks_gridlayout"
                     android:layout_width="wrap_content"
@@ -97,14 +98,14 @@
                          android:layout_height="@dimen/social_network_button_size"
                          android:layout_marginRight="20dp"
                          android:backgroundTint="@android:color/transparent"
-                         android:src="@drawable/ic_odnoklassniki"/>
+                         android:src="@drawable/ic_odnoklassniki" />
 
             <ImageButton android:id="@+id/sbarbank_button"
                          android:layout_width="@dimen/social_network_button_size"
                          android:layout_height="@dimen/social_network_button_size"
                          android:layout_marginRight="20dp"
                          android:backgroundTint="@android:color/transparent"
-                         android:src="@drawable/ic_sbarbank"/>
+                         android:src="@drawable/ic_sbarbank" />
 
 
             <ImageButton android:id="@+id/vk_button"
@@ -112,20 +113,20 @@
                          android:layout_height="@dimen/social_network_button_size"
                          android:layout_marginRight="20dp"
                          android:backgroundTint="@android:color/transparent"
-                         android:src="@drawable/ic_vk"/>
+                         android:src="@drawable/ic_vk" />
 
             <ImageButton android:id="@+id/telegram_button"
                          android:layout_width="@dimen/social_network_button_size"
                          android:layout_height="@dimen/social_network_button_size"
                          android:layout_marginRight="20dp"
                          android:backgroundTint="@android:color/transparent"
-                         android:src="@drawable/ic_telegram"/>
+                         android:src="@drawable/ic_telegram" />
 
             <ImageButton android:id="@+id/yandex_button"
                          android:layout_width="@dimen/social_network_button_size"
                          android:layout_height="@dimen/social_network_button_size"
                          android:backgroundTint="@android:color/transparent"
-                         android:src="@drawable/ic_yandex"/>
+                         android:src="@drawable/ic_yandex" />
 
         </GridLayout>
 
@@ -139,7 +140,7 @@
                   android:textSize="@dimen/small_text_size"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="parent"/>
+                  app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
