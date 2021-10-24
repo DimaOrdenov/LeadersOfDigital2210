@@ -79,6 +79,7 @@
     <Compile Include="Fragments\Main\ProfileFragment.cs" />
     <Compile Include="Activities\Setup\TripSetupActivity.cs" />
     <Compile Include="Activities\Setup\InterestsSetupActivity.cs" />
+    <Compile Include="Activities\Results\RecommendedRouteActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -369,6 +370,10 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecommendedRouteActivity.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -475,6 +480,7 @@
       <Project>{9d864e21-422e-40d9-b9e7-e2b5b928692d}</Project>
       <Name>LeadersOfDigital.DataModels</Name>
     </ProjectReference>
+    <Folder Include="Activities\Results\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="secrets.json">
