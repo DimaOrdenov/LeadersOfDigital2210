@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
+using AndroidX.ConstraintLayout.Widget;
 using Converters;
 using LeadersOfDigital.ViewModels.Setup;
 using MvvmCross.Platforms.Android.Binding;
@@ -23,6 +24,7 @@ namespace LeadersOfDigital.Android.Activities.Setup
         private TextView _lastFlightTimeRange;
         private TextView _hotelName;
         private TextView _hotelLastDate;
+        private ConstraintLayout _nextStep;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -38,6 +40,7 @@ namespace LeadersOfDigital.Android.Activities.Setup
             _lastFlightTimeRange = FindViewById<TextView>(Resource.Id.choose_interests_panel_from_time_range);
             _hotelName = FindViewById<TextView>(Resource.Id.choose_interests_panel_hotel_name);
             _hotelLastDate = FindViewById<TextView>(Resource.Id.choose_interests_panel_hotel_date);
+            _nextStep = FindViewById<ConstraintLayout>(Resource.Id.choose_interests_next_step);
 
             var set = CreateBindingSet();
 
@@ -79,6 +82,10 @@ namespace LeadersOfDigital.Android.Activities.Setup
             set.Bind(_hotelName)
                 .For(x => x.Text)
                 .To(vm => vm.NavigationParameter.HotelsResponse.HotelName);
+
+            set.Bind(_nextStep)
+                .For(x => x.BindClick())
+                .To(vm => vm.NextStepCommand);
 
             set.Apply();
         }

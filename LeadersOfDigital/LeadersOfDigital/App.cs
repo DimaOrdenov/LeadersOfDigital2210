@@ -8,6 +8,7 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using RestSharp;
 using LeadersOfDigital.Android.Helpers;
+using LeadersOfDigital.Definitions;
 
 namespace LeadersOfDigital
 {
@@ -31,6 +32,8 @@ namespace LeadersOfDigital
                     Mvx.IoCProvider.Resolve<ILogger<GoogleMapsApiService>>(),
                     Secrets.GoogleApisKey
                 ));
+
+            Mvx.IoCProvider.RegisterSingleton(new AppStorage());
 
             Mvx.IoCProvider.RegisterType<MainViewModel>();
             Mvx.IoCProvider.RegisterType<FavoritesViewModel>();
