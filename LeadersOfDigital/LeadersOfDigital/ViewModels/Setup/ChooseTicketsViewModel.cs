@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Business;
+using Definitions.Interactions;
 using LeadersOfDigital.Definitions;
 using LeadersOfDigital.Definitions.Exceptions;
 using LeadersOfDigital.Helpers;
@@ -51,6 +52,24 @@ namespace LeadersOfDigital.ViewModels.Setup
                     TicketsResults.Add(ArrivalTicket);
 
                     await RaisePropertyChanged(nameof(TicketsResults));
+                });
+
+            NextStepCommand = new MvxCommand(
+                async () =>
+                {
+                    if (_departureTicket == null || _arrivalTicket == null)
+                    {
+                        HumanReadableExceptionInteractionLocal.Raise(new BaseInteractionResult(false) { ErrorMessage = "Сначала выберите перелет туда и обратно" });
+
+                        return;
+                    }
+
+                    await NavigationService.Navigate<ChooseHotelsViewModel, ChooseHotelsViewModel.ChooseHotelsParameter>(
+                        new ChooseHotelsViewModel.ChooseHotelsParameter(
+                            NavigationParameter.DepartsAt,
+                            NavigationParameter.ArrivesAt,
+                            DepartureTicket,
+                            ArrivalTicket));
                 });
 
             TicketsResults = new MvxObservableCollection<TicketItemViewModel>();

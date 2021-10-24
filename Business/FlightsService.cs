@@ -17,7 +17,7 @@ namespace Business
 
         public Task<IEnumerable<FlightsResponse>> GetFlightsAsync(int originId, int destinationId, DateTime date, CancellationToken token)
         {
-            var request = new RestRequest("Flights")
+            var request = new RestRequest("flights")
                 .AddQueryParameter("origin", originId.ToString())
                 .AddQueryParameter("destination", destinationId.ToString())
                 .AddQueryParameter("departure", date.ToString("yyyy-MM-dd"));

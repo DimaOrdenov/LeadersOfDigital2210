@@ -56,6 +56,7 @@
     <Compile Include="Activities\Map\MapActivity.cs" />
     <Compile Include="Activities\Map\MapActivity.Intercations.cs" />
     <Compile Include="Activities\Map\MapActivity.MapListeners.cs" />
+    <Compile Include="Activities\Setup\ChooseHotelsActivity.cs" />
     <Compile Include="Activities\Setup\ChooseTicketsActivity.cs" />
     <Compile Include="Adapters\MapSearchResultsAdapter.cs" />
     <Compile Include="Adapters\TicketsAdapter.cs" />
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\airplane_over_blue_sky.png" />
+    <AndroidResource Include="Resources\drawable\bandara_villas_phuket.jpeg" />
     <AndroidResource Include="Resources\drawable\bottom_sheet_rounded_background_primary.xml" />
     <AndroidResource Include="Resources\drawable\ic_airplane_in_flight.xml" />
     <AndroidResource Include="Resources\drawable\ic_airplane_takeoff.xml" />
@@ -97,6 +99,9 @@
     <AndroidResource Include="Resources\drawable\ic_check_circle.xml" />
     <AndroidResource Include="Resources\drawable\ic_clear.xml" />
     <AndroidResource Include="Resources\drawable\ic_close.xml" />
+    <AndroidResource Include="Resources\drawable\ic_emoji_high_voltage.png" />
+    <AndroidResource Include="Resources\drawable\ic_emoji_thumbs_up.png" />
+    <AndroidResource Include="Resources\drawable\ic_house.xml" />
     <AndroidResource Include="Resources\drawable\ic_info.xml" />
     <AndroidResource Include="Resources\drawable\ic_minus.xml" />
     <AndroidResource Include="Resources\drawable\ic_my_location.xml" />
@@ -104,6 +109,8 @@
     <AndroidResource Include="Resources\drawable\ic_pin_underline.xml" />
     <AndroidResource Include="Resources\drawable\ic_plus.xml" />
     <AndroidResource Include="Resources\drawable\ic_sbarbank.xml" />
+    <AndroidResource Include="Resources\drawable\ic_star.xml" />
+    <AndroidResource Include="Resources\drawable\ic_star_filled.xml" />
     <AndroidResource Include="Resources\drawable\ic_telegram.xml" />
     <AndroidResource Include="Resources\drawable\ic_train.xml" />
     <AndroidResource Include="Resources\drawable\ic_vk.xml" />
@@ -142,6 +149,7 @@
     <AndroidResource Include="Resources\font\gilroy_thin_italic.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light.ttf" />
     <AndroidResource Include="Resources\font\gilroy_ultra_light_italic.ttf" />
+    <AndroidResource Include="Resources\layout\ChooseHotelsView.axml" />
     <AndroidResource Include="Resources\layout\ChooseTicketsListItem.axml" />
     <AndroidResource Include="Resources\layout\ChooseTicketsView.axml" />
     <AndroidResource Include="Resources\layout\LoadingStateView.axml" />
