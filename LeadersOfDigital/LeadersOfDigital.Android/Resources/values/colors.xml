@@ -11,4 +11,5 @@
     <color name="colorSeparator">#5C3C3C43</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorAccentGreen">#65CC0F</color>
+    <color name="colorBackgroundLight2">#F7F9FE</color>
 </resources>

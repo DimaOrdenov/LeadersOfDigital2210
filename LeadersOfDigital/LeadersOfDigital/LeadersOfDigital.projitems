@@ -14,11 +14,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNotNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\AppStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Attributes\ImageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Exceptions\HumanReadableException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\BaseInteractionResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\ExtendedInteraction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\IExtendedInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Trip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PageStateType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PlaceType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\TransportType.cs" />

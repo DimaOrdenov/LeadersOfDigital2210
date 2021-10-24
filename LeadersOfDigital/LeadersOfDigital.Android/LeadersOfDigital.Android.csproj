@@ -88,6 +88,7 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\color\bottom_nav_color.xml" />
     <AndroidResource Include="Resources\drawable\airplane_over_blue_sky.png" />
     <AndroidResource Include="Resources\drawable\bandara_villas_phuket.jpeg" />
     <AndroidResource Include="Resources\drawable\bottom_sheet_rounded_background_primary.xml" />
@@ -102,6 +103,7 @@
     <AndroidResource Include="Resources\drawable\ic_close.xml" />
     <AndroidResource Include="Resources\drawable\ic_emoji_high_voltage.png" />
     <AndroidResource Include="Resources\drawable\ic_emoji_thumbs_up.png" />
+    <AndroidResource Include="Resources\drawable\ic_handbag.xml" />
     <AndroidResource Include="Resources\drawable\ic_house.xml" />
     <AndroidResource Include="Resources\drawable\ic_info.xml" />
     <AndroidResource Include="Resources\drawable\ic_minus.xml" />
@@ -126,6 +128,8 @@
     <AndroidResource Include="Resources\drawable\ripple_rounded_white_4.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_accent.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_background.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_background_4.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_background_background_light_2.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_primary.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_primary_dark.xml" />
     <AndroidResource Include="Resources\drawable\rounded_background_primary_dark_4.xml" />
