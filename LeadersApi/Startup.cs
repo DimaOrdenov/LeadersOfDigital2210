@@ -3,6 +3,7 @@ using Dal;
 using LeadersApi.Automapper;
 using LeadersApi.Services.Flights;
 using LeadersApi.Services.Hotels;
+using LeadersApi.Services.Weather;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ namespace LeadersApi
 
             services.AddTransient<IHotelsService, HotelsService>();
             services.AddTransient<IFlightsService, FlightsService>();
+            services.AddTransient<IWeatherService, WeatherService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
