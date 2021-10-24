@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PlaceType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\TransportType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelHandledAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CollectionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GoogleApiDirectionsHelper.cs" />

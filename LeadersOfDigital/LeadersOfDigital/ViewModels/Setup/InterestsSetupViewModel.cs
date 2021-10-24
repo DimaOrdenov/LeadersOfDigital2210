@@ -9,10 +9,9 @@ using MvvmCross.Navigation;
 
 namespace LeadersOfDigital.ViewModels.Setup
 {
-    public class InterestsSetupViewModel : PageViewModel<InterestsSetupViewModel.InterestsSetupParameter>
+    public class InterestsSetupViewModel : PageViewModel<InterestsSetupViewModel.InterestsSetupParameter, ViewModelResult>
     {
         public InterestsSetupViewModel(
-            AppStorage appStorage,
             IMvxNavigationService navigationService,
             ILogger<InterestsSetupViewModel> logger)
             : base(navigationService, logger)
@@ -20,26 +19,33 @@ namespace LeadersOfDigital.ViewModels.Setup
             NextStepCommand = new MvxCommand(
                 async () =>
                 {
-                    appStorage.PlannedTrip = new Trip
-                    {
-                        StartsAt = NavigationParameter.DepartsAt,
-                        EndsAt = NavigationParameter.ArrivesAt,
-                        FlightFrom = NavigationParameter.FlightFrom,
-                        FlightTo = NavigationParameter.FlightTo,
-                        Hotel = NavigationParameter.HotelsResponse,
-                    };
+                    var result = await NavigationService.Navigate<RecommendedRouteViewModel, RecommendedRouteViewModel.RecommendedRouteParameter, ViewModelResult>(
+                        new RecommendedRouteViewModel.RecommendedRouteParameter(
+                            NavigationParameter.DepartsAt,
+                            NavigationParameter.ArrivesAt,
+                            NavigationParameter.FlightFrom,
+                            NavigationParameter.FlightTo,
+                            NavigationParameter.HotelsResponse
+                        ));
 
-                    await NavigationService.Close(this);
-                    await Task.Delay(500);
-                    await NavigationService.Close(this);
-                    await Task.Delay(500);
-                    await NavigationService.Close(this);
-                    await Task.Delay(500);
-                    await NavigationService.Close(this);
+                    if (result?.CloseRequested == true)
+                    {
+                        await Task.Delay(200);
+                        await NavigationService.Close(this, new ViewModelResult(true));
+                    }
                 });
+
+            NavigateBackCommand = new MvxCommand(() => navigationService.Close(this, new ViewModelResult()));
         }
 
         public IMvxCommand NextStepCommand { get; }
+
+        public override IMvxCommand NavigateBackCommand { get; }
+
+        public override void OnHardwareBackPressed()
+        {
+            NavigationService.Close(this, new ViewModelResult());
+        }
 
         public class InterestsSetupParameter : ChooseHotelsViewModel.ChooseHotelsParameter
         {
