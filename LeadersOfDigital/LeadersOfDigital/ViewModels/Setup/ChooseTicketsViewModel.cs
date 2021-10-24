@@ -14,7 +14,7 @@ using Xamarin.Essentials;
 
 namespace LeadersOfDigital.ViewModels.Setup
 {
-    public class ChooseTicketsViewModel : PageViewModel<ChooseTicketsViewModel.ChooseTicketsParameter>
+    public class ChooseTicketsViewModel : PageViewModel<ChooseTicketsViewModel.ChooseTicketsParameter, ViewModelResult>
     {
         private readonly IFlightsService _flightsService;
         private TicketItemViewModel _departureTicket;
@@ -64,12 +64,18 @@ namespace LeadersOfDigital.ViewModels.Setup
                         return;
                     }
 
-                    await NavigationService.Navigate<ChooseHotelsViewModel, ChooseHotelsViewModel.ChooseHotelsParameter>(
+                    var result = await NavigationService.Navigate<ChooseHotelsViewModel, ChooseHotelsViewModel.ChooseHotelsParameter, ViewModelResult>(
                         new ChooseHotelsViewModel.ChooseHotelsParameter(
                             NavigationParameter.DepartsAt,
                             NavigationParameter.ArrivesAt,
                             DepartureTicket,
                             ArrivalTicket));
+
+                    if (result?.CloseRequested == true)
+                    {
+                        await Task.Delay(200);
+                        await NavigationService.Close(this, new ViewModelResult(true));
+                    }
                 });
 
             TicketsResults = new MvxObservableCollection<TicketItemViewModel>();
@@ -93,6 +99,13 @@ namespace LeadersOfDigital.ViewModels.Setup
         {
             get => _arrivalTicket;
             set => SetProperty(ref _arrivalTicket, value);
+        }
+
+        public override IMvxCommand NavigateBackCommand { get; }
+
+        public override void OnHardwareBackPressed()
+        {
+            NavigationService.Close(this, new ViewModelResult());
         }
 
         public override void ViewCreated()

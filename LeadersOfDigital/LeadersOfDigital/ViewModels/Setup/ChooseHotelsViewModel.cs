@@ -10,7 +10,7 @@ using MvvmCross.Navigation;
 
 namespace LeadersOfDigital.ViewModels.Setup
 {
-    public class ChooseHotelsViewModel : PageViewModel<ChooseHotelsViewModel.ChooseHotelsParameter>
+    public class ChooseHotelsViewModel : PageViewModel<ChooseHotelsViewModel.ChooseHotelsParameter, ViewModelResult>
     {
         private readonly IHotelsService _hotelsService;
         private HotelsResponse _suggestedHotel;
@@ -26,13 +26,19 @@ namespace LeadersOfDigital.ViewModels.Setup
             NextStepCommand = new MvxCommand(
                 async () =>
                 {
-                    await NavigationService.Navigate<InterestsSetupViewModel, InterestsSetupViewModel.InterestsSetupParameter>(
+                    var result = await NavigationService.Navigate<InterestsSetupViewModel, InterestsSetupViewModel.InterestsSetupParameter, ViewModelResult>(
                         new InterestsSetupViewModel.InterestsSetupParameter(
                             NavigationParameter.DepartsAt,
                             NavigationParameter.ArrivesAt,
                             NavigationParameter.FlightFrom,
                             NavigationParameter.FlightTo,
                             _suggestedHotel));
+
+                    if (result?.CloseRequested == true)
+                    {
+                        await Task.Delay(200);
+                        await NavigationService.Close(this, new ViewModelResult(true));
+                    }
                 });
         }
 
@@ -65,6 +71,13 @@ namespace LeadersOfDigital.ViewModels.Setup
 
                 State = PageStateType.Content;
             });
+        }
+
+        public override IMvxCommand NavigateBackCommand { get; }
+
+        public override void OnHardwareBackPressed()
+        {
+            NavigationService.Close(this, new ViewModelResult());
         }
 
         public class ChooseHotelsParameter : ChooseTicketsViewModel.ChooseTicketsParameter

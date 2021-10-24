@@ -2,20 +2,18 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
-using AndroidX.ConstraintLayout.Widget;
 using Converters;
-using LeadersOfDigital.ViewModels.Setup;
+using LeadersOfDigital.ViewModels.Results;
 using MvvmCross.Platforms.Android.Binding;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.Platforms.Android.Views;
 
-namespace LeadersOfDigital.Android.Activities.Setup
+namespace LeadersOfDigital.Android.Activities.Results
 {
     [MvxActivityPresentation]
     [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
-    public class InterestsSetupActivity : MvxActivity<InterestsSetupViewModel>
+    public class RecommendedRouteActivity : MvxActivity<RecommendedRouteViewModel>
     {
-        private Button _back;
         private TextView _firstFlightDate;
         private TextView _lastFlightDate;
         private TextView _firstFlightRoute;
@@ -24,27 +22,28 @@ namespace LeadersOfDigital.Android.Activities.Setup
         private TextView _lastFlightTimeRange;
         private TextView _hotelName;
         private TextView _hotelLastDate;
-        private ConstraintLayout _nextStep;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.InterestsSetupActivity);
+            SetContentView(Resource.Layout.RecommendedRouteActivity);
 
-            _back = FindViewById<Button>(Resource.Id.nav_back_button);
-            _firstFlightDate = FindViewById<TextView>(Resource.Id.choose_interests_panel_to_date);
-            _lastFlightDate = FindViewById<TextView>(Resource.Id.choose_interests_panel_from_date);
-            _firstFlightRoute = FindViewById<TextView>(Resource.Id.choose_interests_panel_to_route);
-            _lastFlightRoute = FindViewById<TextView>(Resource.Id.choose_interests_panel_from_route);
-            _firstFlightTimeRange = FindViewById<TextView>(Resource.Id.choose_interests_panel_to_time_range);
-            _lastFlightTimeRange = FindViewById<TextView>(Resource.Id.choose_interests_panel_from_time_range);
-            _hotelName = FindViewById<TextView>(Resource.Id.choose_interests_panel_hotel_name);
-            _hotelLastDate = FindViewById<TextView>(Resource.Id.choose_interests_panel_hotel_date);
-            _nextStep = FindViewById<ConstraintLayout>(Resource.Id.choose_interests_next_step);
+            _firstFlightDate = FindViewById<TextView>(Resource.Id.recommended_route_panel_from_date);
+            _lastFlightDate = FindViewById<TextView>(Resource.Id.recommended_route_panel_from_date);
+            _firstFlightRoute = FindViewById<TextView>(Resource.Id.recommended_route_panel_to_route);
+            _lastFlightRoute = FindViewById<TextView>(Resource.Id.recommended_route_panel_from_route);
+            _firstFlightTimeRange = FindViewById<TextView>(Resource.Id.recommended_route_panel_to_time_range);
+            _lastFlightTimeRange = FindViewById<TextView>(Resource.Id.recommended_route_panel_from_time_range);
+            _hotelName = FindViewById<TextView>(Resource.Id.recommended_route_panel_hotel_name);
+            _hotelLastDate = FindViewById<TextView>(Resource.Id.recommended_route_panel_hotel_date);
 
             var set = CreateBindingSet();
 
-            set.Bind(_back)
+            set.Bind(FindViewById(Resource.Id.next_button))
+                .For(x => x.BindClick())
+                .To(vm => vm.NextStepCommand);
+
+            set.Bind(FindViewById(Resource.Id.nav_back_button))
                 .For(x => x.BindClick())
                 .To(vm => vm.NavigateBackCommand);
 
@@ -82,10 +81,6 @@ namespace LeadersOfDigital.Android.Activities.Setup
             set.Bind(_hotelName)
                 .For(x => x.Text)
                 .To(vm => vm.NavigationParameter.HotelsResponse.HotelName);
-
-            set.Bind(_nextStep)
-                .For(x => x.BindClick())
-                .To(vm => vm.NextStepCommand);
 
             set.Apply();
         }

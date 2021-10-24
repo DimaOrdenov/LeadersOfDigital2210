@@ -23,11 +23,13 @@ SelfTrip - мобильное приложение для путешествен
 {
   "SqlUserId": "db_login",
   "SqlPassword": "db_password",
-  "AviasalesToken": "123tokenkey4123"
+  "AviasalesToken": "123tokenkey4123",
+  "WeatherApiToken": "123456weather",
 }
 `
 - Логин и пароль использовать от вашего SQLServer
 - AviasalesToken можно получить тут https://app.travelpayouts.com
+- WeatherApiToken можно получить тут https://rapidapi.com/weatherapi/api/weatherapi-com/
 - Открыть в Visual Studio LeadersOfDigital.sln
 - Запустить проект LeadersApi
 - В целях разработки список отелей закеширован. Чтобы отключить - необходимо удалить использование IMemoryCache из HotelsService.GetHotels(), либо установить длительность кэширования 0.

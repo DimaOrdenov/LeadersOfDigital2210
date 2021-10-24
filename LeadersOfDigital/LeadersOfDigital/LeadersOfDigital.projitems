@@ -14,15 +14,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNotNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\AppStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Attributes\ImageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Exceptions\HumanReadableException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\BaseInteractionResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\ExtendedInteraction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Interactions\IExtendedInteraction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\Trip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PageStateType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\PlaceType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\Types\TransportType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelHandledAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Definitions\ViewModelResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CollectionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GoogleApiDirectionsHelper.cs" />
@@ -43,9 +46,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\TripSetupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToNullDateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Setup\InterestsSetupViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Results\RecommendedRouteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Main\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Setup\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Results\" />
   </ItemGroup>
 </Project>

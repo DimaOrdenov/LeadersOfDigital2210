@@ -22,7 +22,7 @@ using Xamarin.Essentials;
 
 namespace LeadersOfDigital.ViewModels
 {
-    public class MapViewModel : PageViewModel
+    public class MapViewModel : PageViewModel<string, ViewModelResult>
     {
         private readonly IGoogleMapsApiService _googleMapsApiService;
         private readonly DebounceDispatcher _debounceDispatcher;
@@ -52,7 +52,13 @@ namespace LeadersOfDigital.ViewModels
                         return;
                     }
 
-                    await navigationService.Navigate<TripSetupViewModel>();
+                    var result = await navigationService.Navigate<TripSetupViewModel, ViewModelResult>();
+
+                    if (result?.CloseRequested == true)
+                    {
+                        await Task.Delay(200);
+                        await NavigationService.Close(this, new ViewModelResult(true));
+                    }
                 });
 
             ItemTapCommand = new MvxCommand<MapSearchResultItemViewModel>(
@@ -149,7 +155,9 @@ namespace LeadersOfDigital.ViewModels
         }
 
         public IMvxCommand<string> SearchCommand { get; }
+
         public IMvxAsyncCommand<string> SetupTripCommand { get; }
+
         public IMvxCommand<MapSearchResultItemViewModel> ItemTapCommand { get; }
 
         public IMvxCommand<Position> SelectDestinationCommand { get; }
@@ -180,6 +188,13 @@ namespace LeadersOfDigital.ViewModels
                 InvokeOnMainThread(async () =>
                     IsMyLocationEnabled = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>() == PermissionStatus.Granted ||
                                           await Permissions.RequestAsync<Permissions.LocationWhenInUse>() == PermissionStatus.Granted));
+        }
+
+        public override IMvxCommand NavigateBackCommand { get; }
+
+        public override void OnHardwareBackPressed()
+        {
+            NavigationService.Close(this, new ViewModelResult());
         }
 
         private Task SearchAsync() =>

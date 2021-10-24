@@ -38,4 +38,7 @@
     <string name="mountains">Горы</string>
     <string name="beach">Пляжный отдых</string>
     <string name="finish_setup">Завершить настройку</string>
+    <string name="recommended_route">Рекомендуемый маршрут</string>
+    <string name="confirm_and_save">Подтвердить и сохранить</string>
+    <string name="want_to_edit">Хочу отредактировать</string>
 </resources>
